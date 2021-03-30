@@ -1,0 +1,69 @@
+﻿@model BilgiIslemEnvanter.Models.Entity.TonerGiris
+
+@{
+    ViewBag.Title = "TonerGiris";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-6 col-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title" style="color:red">Depo Toner Girişi</h4>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <form class="form form-horizontal" method="post">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <b><label>Yazıcı Marka</label></b>
+                            </div>
+                            <div class="col-md-8 form-group">
+                                @Html.DropDownListFor(m => m.YaziciMarkalari.ID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+                            </div>
+
+                            <div class="col-md-4">
+                                <b><label>Yazıcı Model</label></b>
+                            </div>
+                            <div class="col-md-8 form-group">
+                                @Html.DropDownListFor(m => m.YaziciModelleri.ID, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+                            </div>
+
+
+
+                            <div class="col-md-4">
+                                <b><label>Gelen Toner Sayısı</label></b>
+                            </div>
+                            <div class="col-md-8 form-group">
+                                <input type="text" id="TonerAdedi" class="form-control" name="TONERADET" required="">
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <b><label>Gelen Drum Sayısı</label></b>
+                            </div>
+                            <div class="col-md-8 form-group">
+                                <input type="text" id="DrumAdedi" class="form-control" name="DRUMADET">
+                            </div>
+
+
+
+                            <div class="col-md-4">
+                                <b><label>Stok Giriş Tarihi</label></b>
+                            </div>
+                            <div class="col-md-8 form-group">
+                                <input type="date" id="GirisTarihi" class="form-control" name="STOKGIRISTARIHI">
+                            </div>
+
+                            
+                            <div class="col-sm-12 d-flex justify-content-end">
+                                <button class="btn btn-primary mr-1 mb-1">Kayıt</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

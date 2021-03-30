@@ -1,0 +1,62 @@
+﻿@model BilgiIslemEnvanter.Models.Entity.Tarayicilar
+
+@{
+    ViewBag.Title = "Getir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle", "Tarayici", FormMethod.Post))
+{
+    <div class="col-md-6 col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Tarayıcı Kayıt Güncelleme Formu</h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <form class="form form-horizontal">
+                        <div class="form-body">
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <label>Tarayıcı ID</label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    @Html.TextBoxFor(m => m.ID, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label>Markası</label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    @Html.TextBoxFor(m => m.MARKA, new { @class = "form-control", @autofocus = "" })
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label>Modeli</label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    @Html.TextBoxFor(m => m.MODEL, new { @class = "form-control" })
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label>Seri Numarası</label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    @Html.TextBoxFor(m => m.SERINO, new { @class = "form-control" })
+                                </div>
+
+                                <div class="col-sm-12 d-flex justify-content-end">
+                                    <button class="btn btn-primary mr-1 mb-1">Güncelle</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

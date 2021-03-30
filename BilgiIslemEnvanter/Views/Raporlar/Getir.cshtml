@@ -1,0 +1,102 @@
+﻿@model BilgiIslemEnvanter.Models.Entity.Tasinirlar
+
+@{
+    ViewBag.Title = "Getir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Zimmet Bilgileri Güncelleme</h2>
+
+@using (Html.BeginForm("Guncelle", "Raporlar", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ID)
+
+    <div class="form-group">
+        Bilgisayar Seri No
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Bilgisayarlar.SERINO, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Yazıcı Seri No
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Yazicilar.SERINO, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Tarayıcı Seri No
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Tarayicilar.SERINO, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DOMAINADI, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DOMAINADI, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DOMAINADI, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DOMAINIP, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DOMAINIP, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DOMAINIP, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.YAZICIPORT, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.YAZICIPORT, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.YAZICIPORT, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Güncelle" class="btn btn-success" />
+        </div>
+    </div>
+
+</div>
+}
+
+@using (Html.BeginForm("DepoyaCek", "Raporlar", FormMethod.Post))
+{
+
+    <input type="checkbox" name="Bilgisayar" value="true" id="Bilgisayar" checked="checked" />
+    <label for="Bilgisayar">Bilgisayar</label>
+
+    <input type="checkbox" name="Yazici" value="true" id="Yazici" checked="checked"/>
+    <label for="Yazici">Yazici</label>
+
+    <input type="checkbox" name="Tarayici" value="true" id="Tarayici" checked="checked" />
+    <label for="Tarayici">Tarayici</label>
+
+    @Html.HiddenFor(model => model.ID)
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Depoya çek" class="btn btn-danger" />
+        </div>
+    </div>
+
+}
+
+
+
+<div>
+    @Html.ActionLink("Zimmet Listesine geri dön", "ZimmetListesi")
+</div>

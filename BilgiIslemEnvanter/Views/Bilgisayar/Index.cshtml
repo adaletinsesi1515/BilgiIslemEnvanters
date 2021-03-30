@@ -1,0 +1,41 @@
+﻿@using BilgiIslemEnvanter.Models.Entity
+@model List<Bilgisayarlar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<a href="/Bilgisayar/Ekle/" class="btn btn-primary">Bilgisayar Ekle</a>
+<br />
+<h2 style="color:red; text-align:center">Burdur Adliyesine ait Bilgisayar Listesi</h2>
+
+<table id="veri" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr style="background: crimson; color: bisque">
+            <td>ID</td>
+            <td>MARKA</td>
+            <td>MODEL</td>
+            <td>SERİ NO</td>
+            <td>İŞLEM</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bilgi in Model)
+        {
+        <tr>
+            <th>@bilgi.ID</th>
+            <td>@bilgi.MARKA</td>
+            <td>@bilgi.MODEL</td>
+            <td>@bilgi.SERINO</td>
+            <td>
+
+                <a href="/Bilgisayar/Sil/@bilgi.ID"><img border="0" alt="sil" src="~/resim/sil.png" width="20" height="20" /></a>
+                <a href="/Bilgisayar/Getir/@bilgi.ID"><img border="0" alt="sil" src="~/resim/update.png" width="20" height="20" /></a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+

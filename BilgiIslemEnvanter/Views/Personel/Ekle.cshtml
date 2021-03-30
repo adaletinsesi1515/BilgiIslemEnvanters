@@ -1,0 +1,72 @@
+﻿@model BilgiIslemEnvanter.Models.Entity.Personeller
+
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-6 col-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title" style="color:red">Personel Kayıt Formu</h4>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <form class="form form-horizontal" method="post">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <b><label>Sicili</label></b>
+                            </div>
+                            <div class="col-md-8 form-group">
+                                <input type="text" id="Sicili" class="form-control" name="SICIL" placeholder="Personel sicili" required="" autofocus="">
+                            </div>
+
+                            <div class="col-md-4">
+                                <b><label>Adı Soyadı</label></b>
+                            </div>
+                            <div class="col-md-8 form-group">
+                                <input type="text" id="AdiSoyadi" class="form-control" name="ADSOYAD" placeholder="Personel Adı Soyadı">
+                            </div>
+
+                            <div class="col-md-4">
+                                <b><label>Unvanı</label></b>
+                            </div>
+                            <div class="col-md-8 form-group">
+                                @Html.DropDownListFor(m => m.Unvanlar.ID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+                            </div>
+
+                            <div class="col-md-4">
+                                <b> <label>Birimi</label></b>
+                            </div>
+                            <div class="col-md-8 form-group">
+                                @Html.DropDownListFor(m => m.Birimler.ID, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <b>  <label>Dahili Telefonu</label></b>
+                            </div>
+                            <div class="col-md-8 form-group">
+                                <input type="text" id="DahiliTelefonu" class="form-control" name="DAHILITELEFONU" placeholder="Dahili No">
+                            </div>
+
+                            <div class="col-md-4">
+                                <b>      <label>Cep Telefonu</label></b>
+                            </div>
+                            <div class="col-md-8 form-group">
+                                <input type="text" id="CepTelefonu" class="form-control" name="CEPTELEFONU" placeholder="Cep Telefonu (0555 555 55 55) şeklinde">
+                            </div>
+
+                            
+                            <div class="col-sm-12 d-flex justify-content-end">
+                                <button class="btn btn-primary mr-1 mb-1">Kayıt</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

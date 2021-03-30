@@ -1,0 +1,175 @@
+﻿
+@using BilgiIslemEnvanter.Models.Entity
+@using BilgiIslemEnvanter.MyClasses
+@model BilgiIslemEnvanter.MyClasses.HepiTopu
+@Scripts.Render("~/bundles/jquery")
+@{
+    ViewBag.Title = "ZimmetYap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*active ekle*@
+@{
+    BilgiIslemEntities db = new BilgiIslemEntities();
+}
+
+@using (Html.BeginForm("Zimmetle", "Personel", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header" style="background: darkblue; color:white">Personel Bilgileri</div>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="col-6">
+                                <label class="col-form-label">ID</label>
+                            </div>
+                            <div class="col-6 my-1">
+                                @{
+                                    int gelenid = Convert.ToInt32(ViewBag.id);
+                                    var model = db.Personeller.Where(x => x.ID == gelenid).FirstOrDefault();
+                                    var unvanbul = db.Unvanlar.Where(x => x.ID == model.UNVANID).FirstOrDefault();
+                                    var birimbul = db.Birimler.Where(x => x.ID == model.BIRIMID).FirstOrDefault();
+                                }
+                                <input type="text" value="@(model.ID)" name="PERSONELID" readonly class="form-control" />
+
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-6">
+                                <label class="col-form-label">Personel Sicili</label>
+                            </div>
+                            <div class="col-6 my-1">
+                                <input type="text" value="@(model.SICIL)" readonly class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-6">
+                                <label class="col-form-label">Personel Adı Soyadı</label>
+                            </div>
+                            <div class="col-6 my-1">
+                                <input type="text" value="@(model.ADSOYAD)" readonly class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-6">
+                                <label class="col-form-label">Ünvanı</label>
+                            </div>
+                            <div class="col-6 my-1">
+                                <input type="text" value="@unvanbul.UNVANAD" readonly class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-6">
+                                <label class="col-form-label">Birimi</label>
+                            </div>
+                            <div class="col-6 my-1">
+                                <input type="text" value="@birimbul.BIRIMAD" readonly class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="col-12" id="bilgisayarlistesiolsun">
+                <div class="card">
+                    <div class="card-header" style="background: red; color:white">Bilgisayar Zimmet Bilgileri</div>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="col-6">
+                                <b> <label class="col-form-label">Kasa</label></b>
+                            </div>
+                            <div class="col-6 my-1">
+                                @Html.DropDownList("BilgisayarSN", null, htmlAttributes: new { @class = "form-control select2" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div id="" class="col-6">
+                                <b><label class="col-form-label">Yazıcı</label></b>
+                            </div>
+                            <div class="col-6 my-1">
+
+                                @Html.DropDownList("yaziciSN", null, htmlAttributes: new { @class = "form-control select2" })
+
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-6">
+                                <b><label class="col-form-label">Tarayıcı</label></b>
+                            </div>
+                            <div class="col-6 my-1">
+
+                                @Html.DropDownList("tarayiciSN", null, htmlAttributes: new { @class = "form-control select2" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-6">
+                                <b> <label class="col-form-label">Domain Adı</label></b>
+                            </div>
+                            <div class="col-6 my-1">
+                                
+                                @Html.TextBoxFor(x => x.domainAdi, new { @class = "form-control" })
+
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-6">
+                                <b> <label class="col-form-label">Domain IP</label></b>
+                            </div>
+                            <div class="col-6 my-1">
+
+                                @Html.TextBoxFor(x => x.domainIP, new { @class = "form-control" })
+
+
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-6">
+                                <b><label class="col-form-label">Yazıcı IP</label></b>
+                            </div>
+                            <div class="col-6 my-1">
+                               
+                                @Html.TextBoxFor(x => x.yaziciIP, new { @class = "form-control" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+       
+        
+
+
+        <div class="row">
+            <div class="col-6">
+                <button class="btn btn-success">KAYDET</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+}
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.select2').select2();
+    });
+</script>

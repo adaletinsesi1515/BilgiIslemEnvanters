@@ -1,0 +1,70 @@
+﻿@model IEnumerable<BilgiIslemEnvanter.Models.Entity.Tasinirlar>
+
+@{
+    ViewBag.Title = "ZimmetListesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Zimmet Listesi</h2>
+
+<p>
+
+    <a href="@Url.Action("ZimmetExcelAktar","Raporlar")" class="btn btn-primary">Excel Aktar</a>
+</p>
+
+<table id="veri" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr style="background: darkblue; color: white; text-align: center">
+            <td>Adı Soyadı</td>
+            <td>Sicili</td>
+            <td>Domain Adı</td>
+            <td>Bilgisayar</td>
+            <td>Yazıcı</td>
+            <td>Tarayıcı</td>
+            <td>İşlem Yap</td>
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+            
+                <td>
+                    @Html.DisplayFor(modelItem => item.Personeller.ADSOYAD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Personeller.SICIL)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOMAINADI)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bilgisayarlar.MARKA)
+                    @Html.DisplayFor(modelItem => item.Bilgisayarlar.MODEL)
+                    @Html.DisplayFor(modelItem => item.Bilgisayarlar.SERINO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Yazicilar.YaziciMarkalari.YAZICIMARKA)
+                    @Html.DisplayFor(modelItem => item.Yazicilar.YaziciModelleri.YAZICIMODEL)
+                    @Html.DisplayFor(modelItem => item.Yazicilar.SERINO)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tarayicilar.MARKA)
+                    @Html.DisplayFor(modelItem => item.Tarayicilar.MODEL)
+                    @Html.DisplayFor(modelItem => item.Tarayicilar.SERINO)
+                </td>
+                <td>
+                    <a href="/Raporlar/Getir/@item.ID" class="btn btn-primary">DEPO TAŞI-GÜNCELLE</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>

@@ -1,0 +1,188 @@
+﻿@using BilgiIslemEnvanter.Models.Entity
+@model BilgiIslemEnvanter.Models.Entity.TonerCikis
+
+@{
+    ViewBag.Title = "TonerCikis";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    BilgiIslemEntities db = new BilgiIslemEntities();
+}
+
+@using (Html.BeginForm("TonerCikis", "Toner", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @{
+            int gelenid = Convert.ToInt32(ViewBag.id);
+            var model = db.Yazicilar.Where(x => x.ID == gelenid).FirstOrDefault();
+
+            var birim = db.Birimler.Where(x => x.ID == model.BIRIMID).FirstOrDefault();
+            var takan = db.Kullanicilar.Where(x => x.ID == gelenid).FirstOrDefault();
+            var person = db.Personeller.Where(x => x.ID == model.PERSONELID).FirstOrDefault();
+
+        }
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-header" style="background: darkblue; color:white">Yazıcı Bilgileri</div>
+                        <div class="card-body">
+
+
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <label class="col-form-label">ID</label>
+                                </div>
+                                <div class="col-6 my-1">
+                                    <input type="text" value="@(model.ID)" name="YAZICIID" readonly class="form-control" />
+
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <label class="col-form-label">Yazıcı Markası</label>
+                                </div>
+                                <div class="col-6 my-1">
+                                    <input type="text" value="@(model.YaziciMarkalari.ID)" readonly hidden="" name="YAZICIMARKAID" class="form-control" />
+                                    <input type="text" value="@(model.YaziciMarkalari.YAZICIMARKA)" readonly class="form-control" />
+                                </div>
+                            </div>
+
+
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <label class="col-form-label">Yazıcı Modeli</label>
+                                </div>
+                                <div class="col-6 my-1">
+
+                                    <input type="text" value="@(model.YaziciModelleri.ID)" readonly hidden="" name="YAZICIMODELID" class="form-control" />
+
+                                    <input type="text" value="@(model.YaziciModelleri.YAZICIMODEL)" readonly class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <label class="col-form-label">Yazıcı Seri No</label>
+                                </div>
+                                <div class="col-6 my-1">
+                                    <input type="text" value="@(model.SERINO)" readonly class="form-control" />
+                                </div>
+                            </div>
+
+
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <label class="col-form-label">Personel</label>
+                                </div>
+                                <div class="col-6 my-1">
+                                    <input type="text" value="@(person.ID)" readonly hidden name="PERSONELID" class="form-control" />
+                                    <input type="text" value="@(person.ADSOYAD)" readonly class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <label class="col-form-label">Birimi</label>
+                                </div>
+                                <div class="col-6 my-1">
+
+                                    <input type="text" value="@(model.Birimler.ID)" readonly hidden="" name="BIRIMID" class="form-control" />
+
+                                    <input type="text" value="@(model.Birimler.BIRIMAD)" readonly class="form-control" />
+                                    <input type="text" value="@(birim.ID)" readonly hidden name="BIRIMID" class="form-control" />
+
+                                    <input type="text" value="@(birim.BIRIMAD)" readonly class="form-control" />
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-header" style="background:  red; color:white">Toner Teslim Bilgileri</div>
+                        <div class="card-body">
+
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <label class="col-form-label">Toner Sayısı</label>
+                                </div>
+                                <div class="col-6 my-1">
+                                    @Html.TextBoxFor(x => x.TONERADET, new { @class = "form-control", required = "", autofocus = "" })
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <label class="col-form-label">Drum Sayısı</label>
+                                </div>
+                                <div class="col-6 my-1">
+                                    @Html.TextBoxFor(x => x.DRAMADET, new { @class = "form-control", required = "" })
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <label class="col-form-label">Takma Tarihi</label>
+                                </div>
+                                <div class="col-6 my-1">
+                                    <input type="date" id="TakmaTarih" class="form-control" name="TAKMATARIHI" required="">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <label class="col-form-label">Yazıcı Sayacı</label>
+                                </div>
+                                <div class="col-6 my-1">
+                                    @Html.TextBoxFor(x => x.YAZICISAYAC, new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <label class="col-form-label">Takan Personel</label>
+                                </div>
+                                <div class="col-6 my-1">
+                                    @Html.DropDownListFor(m => m.TakanKullaniciId, (List<SelectListItem>)ViewBag.dgr4, new { @class = "form-control" })
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Kaydet" class="btn btn-success" />
+        </div>
+    </div>
+
+
+
+}
+
+
+<div class="form-group">
+    @Html.ActionLink("Listeye geri dön", "Liste")
+</div>
+
+

@@ -1,0 +1,1290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BilgiIslemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bilgisayarlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MARKA" Type="varchar" MaxLength="100" />
+          <Property Name="MODEL" Type="varchar" MaxLength="100" />
+          <Property Name="SERINO" Type="varchar" MaxLength="30" />
+          <Property Name="DURUM" Type="bit" />
+          <Property Name="ZIMMET" Type="bit" />
+        </EntityType>
+        <EntityType Name="Birimler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BIRIMAD" Type="varchar" MaxLength="100" />
+          <Property Name="DURUM" Type="bit" />
+        </EntityType>
+        <EntityType Name="Depolar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DEPO" Type="varchar" MaxLength="100" />
+          <Property Name="URUNTIPI" Type="varchar" MaxLength="100" />
+          <Property Name="MARKA" Type="varchar" MaxLength="100" />
+          <Property Name="MODEL" Type="varchar" MaxLength="100" />
+          <Property Name="SERINO" Type="varchar" MaxLength="100" />
+          <Property Name="SAGLAMMI" Type="bit" />
+          <Property Name="DURUM" Type="bit" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SICIL" Type="varchar" MaxLength="10" />
+          <Property Name="ADISOYADI" Type="varchar" MaxLength="100" />
+          <Property Name="KULLANICIADI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SIFRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DURUM" Type="bit" />
+        </EntityType>
+        <EntityType Name="Personeller">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SICIL" Type="varchar" MaxLength="20" />
+          <Property Name="ADSOYAD" Type="varchar" MaxLength="100" />
+          <Property Name="UNVANID" Type="int" />
+          <Property Name="BIRIMID" Type="int" />
+          <Property Name="DAHILITELEFONU" Type="varchar" MaxLength="50" />
+          <Property Name="CEPTELEFONU" Type="varchar" MaxLength="50" />
+          <Property Name="DURUM" Type="bit" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tarayicilar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MARKA" Type="varchar" MaxLength="100" />
+          <Property Name="MODEL" Type="varchar" MaxLength="100" />
+          <Property Name="SERINO" Type="varchar" MaxLength="30" />
+          <Property Name="DURUM" Type="bit" />
+          <Property Name="ZIMMET" Type="bit" />
+        </EntityType>
+        <EntityType Name="Tasinirlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PERSONELID" Type="int" />
+          <Property Name="BILGISAYARID" Type="int" />
+          <Property Name="YAZICIID" Type="int" />
+          <Property Name="TARAYICIID" Type="int" />
+          <Property Name="DOMAINADI" Type="varchar" MaxLength="50" />
+          <Property Name="DOMAINIP" Type="varchar" MaxLength="50" />
+          <Property Name="YAZICIPORT" Type="varchar" MaxLength="50" />
+          <Property Name="DURUM" Type="bit" />
+          <Property Name="ZIMMET" Type="bit" />
+          <Property Name="BILGIZIMMET" Type="bit" />
+          <Property Name="YAZICIZIMMET" Type="bit" />
+          <Property Name="TARAYICIZIMMET" Type="bit" />
+        </EntityType>
+        <EntityType Name="TonerCikis">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YAZICIID" Type="int" />
+          <Property Name="BIRIMID" Type="int" />
+          <Property Name="YAZICIMARKAID" Type="int" />
+          <Property Name="YAZICIMODELID" Type="int" />
+          <Property Name="TONERADET" Type="int" />
+          <Property Name="DRAMADET" Type="int" />
+          <Property Name="TAKMATARIHI" Type="datetime" />
+          <Property Name="YAZICISAYAC" Type="int" />
+          <Property Name="TakanKullaniciId" Type="int" />
+        </EntityType>
+        <EntityType Name="TonerGiris">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YAZICIMARKA" Type="int" />
+          <Property Name="YAZICIMODEL" Type="int" />
+          <Property Name="TONERADET" Type="int" />
+          <Property Name="DRUMADET" Type="int" />
+          <Property Name="STOKGIRISTARIHI" Type="datetime" />
+          <Property Name="DURUM" Type="bit" />
+        </EntityType>
+        <EntityType Name="TonerStok">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YAZICIMARKALARIID" Type="int" />
+          <Property Name="YAZICIMODELLERIID" Type="int" />
+          <Property Name="TONERGIRISID" Type="int" />
+          <Property Name="TONERCIKISID" Type="int" />
+          <Property Name="KALANTONER" Type="int" />
+          <Property Name="KALANDRUM" Type="int" />
+          <Property Name="DURUM" Type="bit" />
+        </EntityType>
+        <EntityType Name="Unvanlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UNVANAD" Type="varchar" MaxLength="100" />
+          <Property Name="DURUM" Type="bit" />
+        </EntityType>
+        <EntityType Name="Yazicilar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="MARKAID" Type="int" />
+          <Property Name="MODELID" Type="int" />
+          <Property Name="SERINO" Type="varchar" MaxLength="30" />
+          <Property Name="DURUM" Type="bit" />
+          <Property Name="ZIMMET" Type="bit" />
+          <Property Name="BIRIMID" Type="int" />
+          <Property Name="PERSONELID" Type="int" />
+        </EntityType>
+        <EntityType Name="YaziciMarkalari">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YAZICIMARKA" Type="nvarchar" MaxLength="50" />
+          <Property Name="DURUM" Type="bit" />
+        </EntityType>
+        <EntityType Name="YaziciModelleri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YAZICIMODEL" Type="nvarchar" MaxLength="50" />
+          <Property Name="YAZICIMARKAID" Type="int" />
+          <Property Name="DURUM" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Personeller_Birimler">
+          <End Role="Birimler" Type="Self.Birimler" Multiplicity="0..1" />
+          <End Role="Personeller" Type="Self.Personeller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Birimler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Personeller">
+              <PropertyRef Name="BIRIMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personeller_Unvanlar">
+          <End Role="Unvanlar" Type="Self.Unvanlar" Multiplicity="0..1" />
+          <End Role="Personeller" Type="Self.Personeller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unvanlar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Personeller">
+              <PropertyRef Name="UNVANID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tasinirlar_Bilgisayarlar">
+          <End Role="Bilgisayarlar" Type="Self.Bilgisayarlar" Multiplicity="0..1" />
+          <End Role="Tasinirlar" Type="Self.Tasinirlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bilgisayarlar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tasinirlar">
+              <PropertyRef Name="BILGISAYARID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tasinirlar_Personeller">
+          <End Role="Personeller" Type="Self.Personeller" Multiplicity="0..1" />
+          <End Role="Tasinirlar" Type="Self.Tasinirlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personeller">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tasinirlar">
+              <PropertyRef Name="PERSONELID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tasinirlar_Tarayicilar1">
+          <End Role="Tarayicilar" Type="Self.Tarayicilar" Multiplicity="0..1" />
+          <End Role="Tasinirlar" Type="Self.Tasinirlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tarayicilar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tasinirlar">
+              <PropertyRef Name="TARAYICIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tasinirlar_Yazicilar">
+          <End Role="Yazicilar" Type="Self.Yazicilar" Multiplicity="0..1" />
+          <End Role="Tasinirlar" Type="Self.Tasinirlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yazicilar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tasinirlar">
+              <PropertyRef Name="YAZICIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerCikis_Birimler">
+          <End Role="Birimler" Type="Self.Birimler" Multiplicity="0..1" />
+          <End Role="TonerCikis" Type="Self.TonerCikis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Birimler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerCikis">
+              <PropertyRef Name="BIRIMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerCikis_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="TonerCikis" Type="Self.TonerCikis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerCikis">
+              <PropertyRef Name="TakanKullaniciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerCikis_Yazicilar">
+          <End Role="Yazicilar" Type="Self.Yazicilar" Multiplicity="0..1" />
+          <End Role="TonerCikis" Type="Self.TonerCikis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yazicilar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerCikis">
+              <PropertyRef Name="YAZICIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerCikis_YaziciMarkalari">
+          <End Role="YaziciMarkalari" Type="Self.YaziciMarkalari" Multiplicity="0..1" />
+          <End Role="TonerCikis" Type="Self.TonerCikis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YaziciMarkalari">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerCikis">
+              <PropertyRef Name="YAZICIMARKAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerCikis_YaziciModelleri">
+          <End Role="YaziciModelleri" Type="Self.YaziciModelleri" Multiplicity="0..1" />
+          <End Role="TonerCikis" Type="Self.TonerCikis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YaziciModelleri">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerCikis">
+              <PropertyRef Name="YAZICIMODELID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerGiris_YaziciMarka">
+          <End Role="YaziciMarkalari" Type="Self.YaziciMarkalari" Multiplicity="0..1" />
+          <End Role="TonerGiris" Type="Self.TonerGiris" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YaziciMarkalari">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerGiris">
+              <PropertyRef Name="YAZICIMARKA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerGiris_YaziciModel">
+          <End Role="YaziciModelleri" Type="Self.YaziciModelleri" Multiplicity="0..1" />
+          <End Role="TonerGiris" Type="Self.TonerGiris" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YaziciModelleri">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerGiris">
+              <PropertyRef Name="YAZICIMODEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerStok_TonerGiris">
+          <End Role="TonerGiris" Type="Self.TonerGiris" Multiplicity="0..1" />
+          <End Role="TonerStok" Type="Self.TonerStok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TonerGiris">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerStok">
+              <PropertyRef Name="TONERGIRISID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerStok_YaziciMarkalari">
+          <End Role="YaziciMarkalari" Type="Self.YaziciMarkalari" Multiplicity="0..1" />
+          <End Role="TonerStok" Type="Self.TonerStok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YaziciMarkalari">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerStok">
+              <PropertyRef Name="YAZICIMARKALARIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerStok_YaziciModelleri">
+          <End Role="YaziciModelleri" Type="Self.YaziciModelleri" Multiplicity="0..1" />
+          <End Role="TonerStok" Type="Self.TonerStok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YaziciModelleri">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerStok">
+              <PropertyRef Name="YAZICIMODELLERIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yazicilar_Birimler">
+          <End Role="Birimler" Type="Self.Birimler" Multiplicity="0..1" />
+          <End Role="Yazicilar" Type="Self.Yazicilar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Birimler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Yazicilar">
+              <PropertyRef Name="BIRIMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yazicilar_Personeller">
+          <End Role="Personeller" Type="Self.Personeller" Multiplicity="0..1" />
+          <End Role="Yazicilar" Type="Self.Yazicilar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personeller">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Yazicilar">
+              <PropertyRef Name="PERSONELID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yazicilar_YaziciMarkalari">
+          <End Role="YaziciMarkalari" Type="Self.YaziciMarkalari" Multiplicity="0..1" />
+          <End Role="Yazicilar" Type="Self.Yazicilar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YaziciMarkalari">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Yazicilar">
+              <PropertyRef Name="MARKAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yazicilar_YaziciModelleri">
+          <End Role="YaziciModelleri" Type="Self.YaziciModelleri" Multiplicity="0..1" />
+          <End Role="Yazicilar" Type="Self.Yazicilar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YaziciModelleri">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Yazicilar">
+              <PropertyRef Name="MODELID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BilgiIslemModelStoreContainer">
+          <EntitySet Name="Bilgisayarlar" EntityType="Self.Bilgisayarlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Birimler" EntityType="Self.Birimler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Depolar" EntityType="Self.Depolar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personeller" EntityType="Self.Personeller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarayicilar" EntityType="Self.Tarayicilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tasinirlar" EntityType="Self.Tasinirlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TonerCikis" EntityType="Self.TonerCikis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TonerGiris" EntityType="Self.TonerGiris" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TonerStok" EntityType="Self.TonerStok" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unvanlar" EntityType="Self.Unvanlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yazicilar" EntityType="Self.Yazicilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YaziciMarkalari" EntityType="Self.YaziciMarkalari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YaziciModelleri" EntityType="Self.YaziciModelleri" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Personeller_Birimler" Association="Self.FK_Personeller_Birimler">
+            <End Role="Birimler" EntitySet="Birimler" />
+            <End Role="Personeller" EntitySet="Personeller" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personeller_Unvanlar" Association="Self.FK_Personeller_Unvanlar">
+            <End Role="Unvanlar" EntitySet="Unvanlar" />
+            <End Role="Personeller" EntitySet="Personeller" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tasinirlar_Bilgisayarlar" Association="Self.FK_Tasinirlar_Bilgisayarlar">
+            <End Role="Bilgisayarlar" EntitySet="Bilgisayarlar" />
+            <End Role="Tasinirlar" EntitySet="Tasinirlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tasinirlar_Personeller" Association="Self.FK_Tasinirlar_Personeller">
+            <End Role="Personeller" EntitySet="Personeller" />
+            <End Role="Tasinirlar" EntitySet="Tasinirlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tasinirlar_Tarayicilar1" Association="Self.FK_Tasinirlar_Tarayicilar1">
+            <End Role="Tarayicilar" EntitySet="Tarayicilar" />
+            <End Role="Tasinirlar" EntitySet="Tasinirlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tasinirlar_Yazicilar" Association="Self.FK_Tasinirlar_Yazicilar">
+            <End Role="Yazicilar" EntitySet="Yazicilar" />
+            <End Role="Tasinirlar" EntitySet="Tasinirlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerCikis_Birimler" Association="Self.FK_TonerCikis_Birimler">
+            <End Role="Birimler" EntitySet="Birimler" />
+            <End Role="TonerCikis" EntitySet="TonerCikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerCikis_Kullanicilar" Association="Self.FK_TonerCikis_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="TonerCikis" EntitySet="TonerCikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerCikis_Yazicilar" Association="Self.FK_TonerCikis_Yazicilar">
+            <End Role="Yazicilar" EntitySet="Yazicilar" />
+            <End Role="TonerCikis" EntitySet="TonerCikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerCikis_YaziciMarkalari" Association="Self.FK_TonerCikis_YaziciMarkalari">
+            <End Role="YaziciMarkalari" EntitySet="YaziciMarkalari" />
+            <End Role="TonerCikis" EntitySet="TonerCikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerCikis_YaziciModelleri" Association="Self.FK_TonerCikis_YaziciModelleri">
+            <End Role="YaziciModelleri" EntitySet="YaziciModelleri" />
+            <End Role="TonerCikis" EntitySet="TonerCikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerGiris_YaziciMarka" Association="Self.FK_TonerGiris_YaziciMarka">
+            <End Role="YaziciMarkalari" EntitySet="YaziciMarkalari" />
+            <End Role="TonerGiris" EntitySet="TonerGiris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerGiris_YaziciModel" Association="Self.FK_TonerGiris_YaziciModel">
+            <End Role="YaziciModelleri" EntitySet="YaziciModelleri" />
+            <End Role="TonerGiris" EntitySet="TonerGiris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerStok_TonerGiris" Association="Self.FK_TonerStok_TonerGiris">
+            <End Role="TonerGiris" EntitySet="TonerGiris" />
+            <End Role="TonerStok" EntitySet="TonerStok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerStok_YaziciMarkalari" Association="Self.FK_TonerStok_YaziciMarkalari">
+            <End Role="YaziciMarkalari" EntitySet="YaziciMarkalari" />
+            <End Role="TonerStok" EntitySet="TonerStok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerStok_YaziciModelleri" Association="Self.FK_TonerStok_YaziciModelleri">
+            <End Role="YaziciModelleri" EntitySet="YaziciModelleri" />
+            <End Role="TonerStok" EntitySet="TonerStok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yazicilar_Birimler" Association="Self.FK_Yazicilar_Birimler">
+            <End Role="Birimler" EntitySet="Birimler" />
+            <End Role="Yazicilar" EntitySet="Yazicilar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yazicilar_Personeller" Association="Self.FK_Yazicilar_Personeller">
+            <End Role="Personeller" EntitySet="Personeller" />
+            <End Role="Yazicilar" EntitySet="Yazicilar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yazicilar_YaziciMarkalari" Association="Self.FK_Yazicilar_YaziciMarkalari">
+            <End Role="YaziciMarkalari" EntitySet="YaziciMarkalari" />
+            <End Role="Yazicilar" EntitySet="Yazicilar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yazicilar_YaziciModelleri" Association="Self.FK_Yazicilar_YaziciModelleri">
+            <End Role="YaziciModelleri" EntitySet="YaziciModelleri" />
+            <End Role="Yazicilar" EntitySet="Yazicilar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BilgiIslemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bilgisayarlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MARKA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MODEL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SERINO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DURUM" Type="Boolean" />
+          <Property Name="ZIMMET" Type="Boolean" />
+          <NavigationProperty Name="Tasinirlar" Relationship="Self.FK_Tasinirlar_Bilgisayarlar" FromRole="Bilgisayarlar" ToRole="Tasinirlar" />
+        </EntityType>
+        <EntityType Name="Birimler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BIRIMAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DURUM" Type="Boolean" />
+          <NavigationProperty Name="Personeller" Relationship="Self.FK_Personeller_Birimler" FromRole="Birimler" ToRole="Personeller" />
+          <NavigationProperty Name="TonerCikis" Relationship="Self.FK_TonerCikis_Birimler" FromRole="Birimler" ToRole="TonerCikis" />
+          <NavigationProperty Name="Yazicilar" Relationship="Self.FK_Yazicilar_Birimler" FromRole="Birimler" ToRole="Yazicilar" />
+        </EntityType>
+        <EntityType Name="Depolar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DEPO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="URUNTIPI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MARKA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MODEL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SERINO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SAGLAMMI" Type="Boolean" />
+          <Property Name="DURUM" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SICIL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ADISOYADI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="KULLANICIADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SIFRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DURUM" Type="Boolean" />
+          <NavigationProperty Name="TonerCikis" Relationship="Self.FK_TonerCikis_Kullanicilar" FromRole="Kullanicilar" ToRole="TonerCikis" />
+        </EntityType>
+        <EntityType Name="Personeller">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SICIL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ADSOYAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UNVANID" Type="Int32" />
+          <Property Name="BIRIMID" Type="Int32" />
+          <Property Name="DAHILITELEFONU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CEPTELEFONU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DURUM" Type="Boolean" />
+          <NavigationProperty Name="Birimler" Relationship="Self.FK_Personeller_Birimler" FromRole="Personeller" ToRole="Birimler" />
+          <NavigationProperty Name="Unvanlar" Relationship="Self.FK_Personeller_Unvanlar" FromRole="Personeller" ToRole="Unvanlar" />
+          <NavigationProperty Name="Tasinirlar" Relationship="Self.FK_Tasinirlar_Personeller" FromRole="Personeller" ToRole="Tasinirlar" />
+          <NavigationProperty Name="Yazicilar" Relationship="Self.FK_Yazicilar_Personeller" FromRole="Personeller" ToRole="Yazicilar" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tarayicilar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MARKA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MODEL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SERINO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DURUM" Type="Boolean" />
+          <Property Name="ZIMMET" Type="Boolean" />
+          <NavigationProperty Name="Tasinirlar" Relationship="Self.FK_Tasinirlar_Tarayicilar1" FromRole="Tarayicilar" ToRole="Tasinirlar" />
+        </EntityType>
+        <EntityType Name="Tasinirlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PERSONELID" Type="Int32" />
+          <Property Name="BILGISAYARID" Type="Int32" />
+          <Property Name="YAZICIID" Type="Int32" />
+          <Property Name="TARAYICIID" Type="Int32" />
+          <Property Name="DOMAINADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DOMAINIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YAZICIPORT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DURUM" Type="Boolean" />
+          <Property Name="ZIMMET" Type="Boolean" />
+          <Property Name="BILGIZIMMET" Type="Boolean" />
+          <Property Name="YAZICIZIMMET" Type="Boolean" />
+          <Property Name="TARAYICIZIMMET" Type="Boolean" />
+          <NavigationProperty Name="Bilgisayarlar" Relationship="Self.FK_Tasinirlar_Bilgisayarlar" FromRole="Tasinirlar" ToRole="Bilgisayarlar" />
+          <NavigationProperty Name="Personeller" Relationship="Self.FK_Tasinirlar_Personeller" FromRole="Tasinirlar" ToRole="Personeller" />
+          <NavigationProperty Name="Tarayicilar" Relationship="Self.FK_Tasinirlar_Tarayicilar1" FromRole="Tasinirlar" ToRole="Tarayicilar" />
+          <NavigationProperty Name="Yazicilar" Relationship="Self.FK_Tasinirlar_Yazicilar" FromRole="Tasinirlar" ToRole="Yazicilar" />
+        </EntityType>
+        <EntityType Name="TonerCikis">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YAZICIID" Type="Int32" />
+          <Property Name="BIRIMID" Type="Int32" />
+          <Property Name="YAZICIMARKAID" Type="Int32" />
+          <Property Name="YAZICIMODELID" Type="Int32" />
+          <Property Name="TONERADET" Type="Int32" />
+          <Property Name="DRAMADET" Type="Int32" />
+          <Property Name="TAKMATARIHI" Type="DateTime" Precision="3" />
+          <Property Name="YAZICISAYAC" Type="Int32" />
+          <Property Name="TakanKullaniciId" Type="Int32" />
+          <NavigationProperty Name="Birimler" Relationship="Self.FK_TonerCikis_Birimler" FromRole="TonerCikis" ToRole="Birimler" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_TonerCikis_Kullanicilar" FromRole="TonerCikis" ToRole="Kullanicilar" />
+          <NavigationProperty Name="Yazicilar" Relationship="Self.FK_TonerCikis_Yazicilar" FromRole="TonerCikis" ToRole="Yazicilar" />
+          <NavigationProperty Name="YaziciMarkalari" Relationship="Self.FK_TonerCikis_YaziciMarkalari" FromRole="TonerCikis" ToRole="YaziciMarkalari" />
+          <NavigationProperty Name="YaziciModelleri" Relationship="Self.FK_TonerCikis_YaziciModelleri" FromRole="TonerCikis" ToRole="YaziciModelleri" />
+        </EntityType>
+        <EntityType Name="TonerGiris">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YAZICIMARKA" Type="Int32" />
+          <Property Name="YAZICIMODEL" Type="Int32" />
+          <Property Name="TONERADET" Type="Int32" />
+          <Property Name="DRUMADET" Type="Int32" />
+          <Property Name="STOKGIRISTARIHI" Type="DateTime" Precision="3" />
+          <Property Name="DURUM" Type="Boolean" />
+          <NavigationProperty Name="YaziciMarkalari" Relationship="Self.FK_TonerGiris_YaziciMarka" FromRole="TonerGiris" ToRole="YaziciMarkalari" />
+          <NavigationProperty Name="YaziciModelleri" Relationship="Self.FK_TonerGiris_YaziciModel" FromRole="TonerGiris" ToRole="YaziciModelleri" />
+          <NavigationProperty Name="TonerStok" Relationship="Self.FK_TonerStok_TonerGiris" FromRole="TonerGiris" ToRole="TonerStok" />
+        </EntityType>
+        <EntityType Name="TonerStok">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YAZICIMARKALARIID" Type="Int32" />
+          <Property Name="YAZICIMODELLERIID" Type="Int32" />
+          <Property Name="TONERGIRISID" Type="Int32" />
+          <Property Name="TONERCIKISID" Type="Int32" />
+          <Property Name="KALANTONER" Type="Int32" />
+          <Property Name="KALANDRUM" Type="Int32" />
+          <Property Name="DURUM" Type="Boolean" />
+          <NavigationProperty Name="TonerGiris" Relationship="Self.FK_TonerStok_TonerGiris" FromRole="TonerStok" ToRole="TonerGiris" />
+          <NavigationProperty Name="YaziciMarkalari" Relationship="Self.FK_TonerStok_YaziciMarkalari" FromRole="TonerStok" ToRole="YaziciMarkalari" />
+          <NavigationProperty Name="YaziciModelleri" Relationship="Self.FK_TonerStok_YaziciModelleri" FromRole="TonerStok" ToRole="YaziciModelleri" />
+        </EntityType>
+        <EntityType Name="Unvanlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UNVANAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DURUM" Type="Boolean" />
+          <NavigationProperty Name="Personeller" Relationship="Self.FK_Personeller_Unvanlar" FromRole="Unvanlar" ToRole="Personeller" />
+        </EntityType>
+        <EntityType Name="Yazicilar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="MARKAID" Type="Int32" />
+          <Property Name="MODELID" Type="Int32" />
+          <Property Name="SERINO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DURUM" Type="Boolean" />
+          <Property Name="ZIMMET" Type="Boolean" />
+          <Property Name="BIRIMID" Type="Int32" />
+          <Property Name="PERSONELID" Type="Int32" />
+          <NavigationProperty Name="Birimler" Relationship="Self.FK_Yazicilar_Birimler" FromRole="Yazicilar" ToRole="Birimler" />
+          <NavigationProperty Name="Personeller" Relationship="Self.FK_Yazicilar_Personeller" FromRole="Yazicilar" ToRole="Personeller" />
+          <NavigationProperty Name="Tasinirlar" Relationship="Self.FK_Tasinirlar_Yazicilar" FromRole="Yazicilar" ToRole="Tasinirlar" />
+          <NavigationProperty Name="TonerCikis" Relationship="Self.FK_TonerCikis_Yazicilar" FromRole="Yazicilar" ToRole="TonerCikis" />
+          <NavigationProperty Name="YaziciMarkalari" Relationship="Self.FK_Yazicilar_YaziciMarkalari" FromRole="Yazicilar" ToRole="YaziciMarkalari" />
+          <NavigationProperty Name="YaziciModelleri" Relationship="Self.FK_Yazicilar_YaziciModelleri" FromRole="Yazicilar" ToRole="YaziciModelleri" />
+        </EntityType>
+        <EntityType Name="YaziciMarkalari">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YAZICIMARKA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DURUM" Type="Boolean" />
+          <NavigationProperty Name="TonerCikis" Relationship="Self.FK_TonerCikis_YaziciMarkalari" FromRole="YaziciMarkalari" ToRole="TonerCikis" />
+          <NavigationProperty Name="TonerGiris" Relationship="Self.FK_TonerGiris_YaziciMarka" FromRole="YaziciMarkalari" ToRole="TonerGiris" />
+          <NavigationProperty Name="TonerStok" Relationship="Self.FK_TonerStok_YaziciMarkalari" FromRole="YaziciMarkalari" ToRole="TonerStok" />
+          <NavigationProperty Name="Yazicilar" Relationship="Self.FK_Yazicilar_YaziciMarkalari" FromRole="YaziciMarkalari" ToRole="Yazicilar" />
+        </EntityType>
+        <EntityType Name="YaziciModelleri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YAZICIMODEL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YAZICIMARKAID" Type="Int32" />
+          <Property Name="DURUM" Type="Boolean" />
+          <NavigationProperty Name="TonerCikis" Relationship="Self.FK_TonerCikis_YaziciModelleri" FromRole="YaziciModelleri" ToRole="TonerCikis" />
+          <NavigationProperty Name="TonerGiris" Relationship="Self.FK_TonerGiris_YaziciModel" FromRole="YaziciModelleri" ToRole="TonerGiris" />
+          <NavigationProperty Name="TonerStok" Relationship="Self.FK_TonerStok_YaziciModelleri" FromRole="YaziciModelleri" ToRole="TonerStok" />
+          <NavigationProperty Name="Yazicilar" Relationship="Self.FK_Yazicilar_YaziciModelleri" FromRole="YaziciModelleri" ToRole="Yazicilar" />
+        </EntityType>
+        <Association Name="FK_Tasinirlar_Bilgisayarlar">
+          <End Role="Bilgisayarlar" Type="Self.Bilgisayarlar" Multiplicity="0..1" />
+          <End Role="Tasinirlar" Type="Self.Tasinirlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bilgisayarlar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tasinirlar">
+              <PropertyRef Name="BILGISAYARID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personeller_Birimler">
+          <End Role="Birimler" Type="Self.Birimler" Multiplicity="0..1" />
+          <End Role="Personeller" Type="Self.Personeller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Birimler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Personeller">
+              <PropertyRef Name="BIRIMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerCikis_Birimler">
+          <End Role="Birimler" Type="Self.Birimler" Multiplicity="0..1" />
+          <End Role="TonerCikis" Type="Self.TonerCikis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Birimler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerCikis">
+              <PropertyRef Name="BIRIMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yazicilar_Birimler">
+          <End Role="Birimler" Type="Self.Birimler" Multiplicity="0..1" />
+          <End Role="Yazicilar" Type="Self.Yazicilar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Birimler">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Yazicilar">
+              <PropertyRef Name="BIRIMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerCikis_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="TonerCikis" Type="Self.TonerCikis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerCikis">
+              <PropertyRef Name="TakanKullaniciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personeller_Unvanlar">
+          <End Role="Unvanlar" Type="Self.Unvanlar" Multiplicity="0..1" />
+          <End Role="Personeller" Type="Self.Personeller" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unvanlar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Personeller">
+              <PropertyRef Name="UNVANID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tasinirlar_Personeller">
+          <End Role="Personeller" Type="Self.Personeller" Multiplicity="0..1" />
+          <End Role="Tasinirlar" Type="Self.Tasinirlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personeller">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tasinirlar">
+              <PropertyRef Name="PERSONELID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yazicilar_Personeller">
+          <End Role="Personeller" Type="Self.Personeller" Multiplicity="0..1" />
+          <End Role="Yazicilar" Type="Self.Yazicilar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personeller">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Yazicilar">
+              <PropertyRef Name="PERSONELID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tasinirlar_Tarayicilar1">
+          <End Role="Tarayicilar" Type="Self.Tarayicilar" Multiplicity="0..1" />
+          <End Role="Tasinirlar" Type="Self.Tasinirlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tarayicilar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tasinirlar">
+              <PropertyRef Name="TARAYICIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tasinirlar_Yazicilar">
+          <End Role="Yazicilar" Type="Self.Yazicilar" Multiplicity="0..1" />
+          <End Role="Tasinirlar" Type="Self.Tasinirlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yazicilar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tasinirlar">
+              <PropertyRef Name="YAZICIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerCikis_Yazicilar">
+          <End Role="Yazicilar" Type="Self.Yazicilar" Multiplicity="0..1" />
+          <End Role="TonerCikis" Type="Self.TonerCikis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yazicilar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerCikis">
+              <PropertyRef Name="YAZICIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerCikis_YaziciMarkalari">
+          <End Role="YaziciMarkalari" Type="Self.YaziciMarkalari" Multiplicity="0..1" />
+          <End Role="TonerCikis" Type="Self.TonerCikis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YaziciMarkalari">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerCikis">
+              <PropertyRef Name="YAZICIMARKAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerCikis_YaziciModelleri">
+          <End Role="YaziciModelleri" Type="Self.YaziciModelleri" Multiplicity="0..1" />
+          <End Role="TonerCikis" Type="Self.TonerCikis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YaziciModelleri">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerCikis">
+              <PropertyRef Name="YAZICIMODELID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerGiris_YaziciMarka">
+          <End Role="YaziciMarkalari" Type="Self.YaziciMarkalari" Multiplicity="0..1" />
+          <End Role="TonerGiris" Type="Self.TonerGiris" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YaziciMarkalari">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerGiris">
+              <PropertyRef Name="YAZICIMARKA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerGiris_YaziciModel">
+          <End Role="YaziciModelleri" Type="Self.YaziciModelleri" Multiplicity="0..1" />
+          <End Role="TonerGiris" Type="Self.TonerGiris" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YaziciModelleri">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerGiris">
+              <PropertyRef Name="YAZICIMODEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerStok_TonerGiris">
+          <End Role="TonerGiris" Type="Self.TonerGiris" Multiplicity="0..1" />
+          <End Role="TonerStok" Type="Self.TonerStok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TonerGiris">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerStok">
+              <PropertyRef Name="TONERGIRISID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerStok_YaziciMarkalari">
+          <End Role="YaziciMarkalari" Type="Self.YaziciMarkalari" Multiplicity="0..1" />
+          <End Role="TonerStok" Type="Self.TonerStok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YaziciMarkalari">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerStok">
+              <PropertyRef Name="YAZICIMARKALARIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TonerStok_YaziciModelleri">
+          <End Role="YaziciModelleri" Type="Self.YaziciModelleri" Multiplicity="0..1" />
+          <End Role="TonerStok" Type="Self.TonerStok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YaziciModelleri">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TonerStok">
+              <PropertyRef Name="YAZICIMODELLERIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yazicilar_YaziciMarkalari">
+          <End Role="YaziciMarkalari" Type="Self.YaziciMarkalari" Multiplicity="0..1" />
+          <End Role="Yazicilar" Type="Self.Yazicilar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YaziciMarkalari">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Yazicilar">
+              <PropertyRef Name="MARKAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yazicilar_YaziciModelleri">
+          <End Role="YaziciModelleri" Type="Self.YaziciModelleri" Multiplicity="0..1" />
+          <End Role="Yazicilar" Type="Self.Yazicilar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YaziciModelleri">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Yazicilar">
+              <PropertyRef Name="MODELID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BilgiIslemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bilgisayarlar" EntityType="Self.Bilgisayarlar" />
+          <EntitySet Name="Birimler" EntityType="Self.Birimler" />
+          <EntitySet Name="Depolar" EntityType="Self.Depolar" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
+          <EntitySet Name="Personeller" EntityType="Self.Personeller" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tarayicilar" EntityType="Self.Tarayicilar" />
+          <EntitySet Name="Tasinirlar" EntityType="Self.Tasinirlar" />
+          <EntitySet Name="TonerCikis" EntityType="Self.TonerCikis" />
+          <EntitySet Name="TonerGiris" EntityType="Self.TonerGiris" />
+          <EntitySet Name="TonerStok" EntityType="Self.TonerStok" />
+          <EntitySet Name="Unvanlar" EntityType="Self.Unvanlar" />
+          <EntitySet Name="Yazicilar" EntityType="Self.Yazicilar" />
+          <EntitySet Name="YaziciMarkalari" EntityType="Self.YaziciMarkalari" />
+          <EntitySet Name="YaziciModelleri" EntityType="Self.YaziciModelleri" />
+          <AssociationSet Name="FK_Tasinirlar_Bilgisayarlar" Association="Self.FK_Tasinirlar_Bilgisayarlar">
+            <End Role="Bilgisayarlar" EntitySet="Bilgisayarlar" />
+            <End Role="Tasinirlar" EntitySet="Tasinirlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personeller_Birimler" Association="Self.FK_Personeller_Birimler">
+            <End Role="Birimler" EntitySet="Birimler" />
+            <End Role="Personeller" EntitySet="Personeller" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerCikis_Birimler" Association="Self.FK_TonerCikis_Birimler">
+            <End Role="Birimler" EntitySet="Birimler" />
+            <End Role="TonerCikis" EntitySet="TonerCikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yazicilar_Birimler" Association="Self.FK_Yazicilar_Birimler">
+            <End Role="Birimler" EntitySet="Birimler" />
+            <End Role="Yazicilar" EntitySet="Yazicilar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerCikis_Kullanicilar" Association="Self.FK_TonerCikis_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="TonerCikis" EntitySet="TonerCikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personeller_Unvanlar" Association="Self.FK_Personeller_Unvanlar">
+            <End Role="Unvanlar" EntitySet="Unvanlar" />
+            <End Role="Personeller" EntitySet="Personeller" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tasinirlar_Personeller" Association="Self.FK_Tasinirlar_Personeller">
+            <End Role="Personeller" EntitySet="Personeller" />
+            <End Role="Tasinirlar" EntitySet="Tasinirlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yazicilar_Personeller" Association="Self.FK_Yazicilar_Personeller">
+            <End Role="Personeller" EntitySet="Personeller" />
+            <End Role="Yazicilar" EntitySet="Yazicilar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tasinirlar_Tarayicilar1" Association="Self.FK_Tasinirlar_Tarayicilar1">
+            <End Role="Tarayicilar" EntitySet="Tarayicilar" />
+            <End Role="Tasinirlar" EntitySet="Tasinirlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tasinirlar_Yazicilar" Association="Self.FK_Tasinirlar_Yazicilar">
+            <End Role="Yazicilar" EntitySet="Yazicilar" />
+            <End Role="Tasinirlar" EntitySet="Tasinirlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerCikis_Yazicilar" Association="Self.FK_TonerCikis_Yazicilar">
+            <End Role="Yazicilar" EntitySet="Yazicilar" />
+            <End Role="TonerCikis" EntitySet="TonerCikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerCikis_YaziciMarkalari" Association="Self.FK_TonerCikis_YaziciMarkalari">
+            <End Role="YaziciMarkalari" EntitySet="YaziciMarkalari" />
+            <End Role="TonerCikis" EntitySet="TonerCikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerCikis_YaziciModelleri" Association="Self.FK_TonerCikis_YaziciModelleri">
+            <End Role="YaziciModelleri" EntitySet="YaziciModelleri" />
+            <End Role="TonerCikis" EntitySet="TonerCikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerGiris_YaziciMarka" Association="Self.FK_TonerGiris_YaziciMarka">
+            <End Role="YaziciMarkalari" EntitySet="YaziciMarkalari" />
+            <End Role="TonerGiris" EntitySet="TonerGiris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerGiris_YaziciModel" Association="Self.FK_TonerGiris_YaziciModel">
+            <End Role="YaziciModelleri" EntitySet="YaziciModelleri" />
+            <End Role="TonerGiris" EntitySet="TonerGiris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerStok_TonerGiris" Association="Self.FK_TonerStok_TonerGiris">
+            <End Role="TonerGiris" EntitySet="TonerGiris" />
+            <End Role="TonerStok" EntitySet="TonerStok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerStok_YaziciMarkalari" Association="Self.FK_TonerStok_YaziciMarkalari">
+            <End Role="YaziciMarkalari" EntitySet="YaziciMarkalari" />
+            <End Role="TonerStok" EntitySet="TonerStok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TonerStok_YaziciModelleri" Association="Self.FK_TonerStok_YaziciModelleri">
+            <End Role="YaziciModelleri" EntitySet="YaziciModelleri" />
+            <End Role="TonerStok" EntitySet="TonerStok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yazicilar_YaziciMarkalari" Association="Self.FK_Yazicilar_YaziciMarkalari">
+            <End Role="YaziciMarkalari" EntitySet="YaziciMarkalari" />
+            <End Role="Yazicilar" EntitySet="Yazicilar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yazicilar_YaziciModelleri" Association="Self.FK_Yazicilar_YaziciModelleri">
+            <End Role="YaziciModelleri" EntitySet="YaziciModelleri" />
+            <End Role="Yazicilar" EntitySet="Yazicilar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BilgiIslemModelStoreContainer" CdmEntityContainer="BilgiIslemEntities">
+          <EntitySetMapping Name="Bilgisayarlar">
+            <EntityTypeMapping TypeName="BilgiIslemModel.Bilgisayarlar">
+              <MappingFragment StoreEntitySet="Bilgisayarlar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MARKA" ColumnName="MARKA" />
+                <ScalarProperty Name="MODEL" ColumnName="MODEL" />
+                <ScalarProperty Name="SERINO" ColumnName="SERINO" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="ZIMMET" ColumnName="ZIMMET" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Birimler">
+            <EntityTypeMapping TypeName="BilgiIslemModel.Birimler">
+              <MappingFragment StoreEntitySet="Birimler">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BIRIMAD" ColumnName="BIRIMAD" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Depolar">
+            <EntityTypeMapping TypeName="BilgiIslemModel.Depolar">
+              <MappingFragment StoreEntitySet="Depolar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DEPO" ColumnName="DEPO" />
+                <ScalarProperty Name="URUNTIPI" ColumnName="URUNTIPI" />
+                <ScalarProperty Name="MARKA" ColumnName="MARKA" />
+                <ScalarProperty Name="MODEL" ColumnName="MODEL" />
+                <ScalarProperty Name="SERINO" ColumnName="SERINO" />
+                <ScalarProperty Name="SAGLAMMI" ColumnName="SAGLAMMI" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanicilar">
+            <EntityTypeMapping TypeName="BilgiIslemModel.Kullanicilar">
+              <MappingFragment StoreEntitySet="Kullanicilar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SICIL" ColumnName="SICIL" />
+                <ScalarProperty Name="ADISOYADI" ColumnName="ADISOYADI" />
+                <ScalarProperty Name="KULLANICIADI" ColumnName="KULLANICIADI" />
+                <ScalarProperty Name="SIFRE" ColumnName="SIFRE" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personeller">
+            <EntityTypeMapping TypeName="BilgiIslemModel.Personeller">
+              <MappingFragment StoreEntitySet="Personeller">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SICIL" ColumnName="SICIL" />
+                <ScalarProperty Name="ADSOYAD" ColumnName="ADSOYAD" />
+                <ScalarProperty Name="UNVANID" ColumnName="UNVANID" />
+                <ScalarProperty Name="BIRIMID" ColumnName="BIRIMID" />
+                <ScalarProperty Name="DAHILITELEFONU" ColumnName="DAHILITELEFONU" />
+                <ScalarProperty Name="CEPTELEFONU" ColumnName="CEPTELEFONU" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BilgiIslemModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarayicilar">
+            <EntityTypeMapping TypeName="BilgiIslemModel.Tarayicilar">
+              <MappingFragment StoreEntitySet="Tarayicilar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MARKA" ColumnName="MARKA" />
+                <ScalarProperty Name="MODEL" ColumnName="MODEL" />
+                <ScalarProperty Name="SERINO" ColumnName="SERINO" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="ZIMMET" ColumnName="ZIMMET" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tasinirlar">
+            <EntityTypeMapping TypeName="BilgiIslemModel.Tasinirlar">
+              <MappingFragment StoreEntitySet="Tasinirlar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PERSONELID" ColumnName="PERSONELID" />
+                <ScalarProperty Name="BILGISAYARID" ColumnName="BILGISAYARID" />
+                <ScalarProperty Name="YAZICIID" ColumnName="YAZICIID" />
+                <ScalarProperty Name="TARAYICIID" ColumnName="TARAYICIID" />
+                <ScalarProperty Name="DOMAINADI" ColumnName="DOMAINADI" />
+                <ScalarProperty Name="DOMAINIP" ColumnName="DOMAINIP" />
+                <ScalarProperty Name="YAZICIPORT" ColumnName="YAZICIPORT" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="ZIMMET" ColumnName="ZIMMET" />
+                <ScalarProperty Name="BILGIZIMMET" ColumnName="BILGIZIMMET" />
+                <ScalarProperty Name="YAZICIZIMMET" ColumnName="YAZICIZIMMET" />
+                <ScalarProperty Name="TARAYICIZIMMET" ColumnName="TARAYICIZIMMET" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TonerCikis">
+            <EntityTypeMapping TypeName="BilgiIslemModel.TonerCikis">
+              <MappingFragment StoreEntitySet="TonerCikis">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="YAZICIID" ColumnName="YAZICIID" />
+                <ScalarProperty Name="BIRIMID" ColumnName="BIRIMID" />
+                <ScalarProperty Name="YAZICIMARKAID" ColumnName="YAZICIMARKAID" />
+                <ScalarProperty Name="YAZICIMODELID" ColumnName="YAZICIMODELID" />
+                <ScalarProperty Name="TONERADET" ColumnName="TONERADET" />
+                <ScalarProperty Name="DRAMADET" ColumnName="DRAMADET" />
+                <ScalarProperty Name="TAKMATARIHI" ColumnName="TAKMATARIHI" />
+                <ScalarProperty Name="YAZICISAYAC" ColumnName="YAZICISAYAC" />
+                <ScalarProperty Name="TakanKullaniciId" ColumnName="TakanKullaniciId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TonerGiris">
+            <EntityTypeMapping TypeName="BilgiIslemModel.TonerGiris">
+              <MappingFragment StoreEntitySet="TonerGiris">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="YAZICIMARKA" ColumnName="YAZICIMARKA" />
+                <ScalarProperty Name="YAZICIMODEL" ColumnName="YAZICIMODEL" />
+                <ScalarProperty Name="TONERADET" ColumnName="TONERADET" />
+                <ScalarProperty Name="DRUMADET" ColumnName="DRUMADET" />
+                <ScalarProperty Name="STOKGIRISTARIHI" ColumnName="STOKGIRISTARIHI" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TonerStok">
+            <EntityTypeMapping TypeName="BilgiIslemModel.TonerStok">
+              <MappingFragment StoreEntitySet="TonerStok">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="YAZICIMARKALARIID" ColumnName="YAZICIMARKALARIID" />
+                <ScalarProperty Name="YAZICIMODELLERIID" ColumnName="YAZICIMODELLERIID" />
+                <ScalarProperty Name="TONERGIRISID" ColumnName="TONERGIRISID" />
+                <ScalarProperty Name="TONERCIKISID" ColumnName="TONERCIKISID" />
+                <ScalarProperty Name="KALANTONER" ColumnName="KALANTONER" />
+                <ScalarProperty Name="KALANDRUM" ColumnName="KALANDRUM" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Unvanlar">
+            <EntityTypeMapping TypeName="BilgiIslemModel.Unvanlar">
+              <MappingFragment StoreEntitySet="Unvanlar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UNVANAD" ColumnName="UNVANAD" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yazicilar">
+            <EntityTypeMapping TypeName="BilgiIslemModel.Yazicilar">
+              <MappingFragment StoreEntitySet="Yazicilar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MARKAID" ColumnName="MARKAID" />
+                <ScalarProperty Name="MODELID" ColumnName="MODELID" />
+                <ScalarProperty Name="SERINO" ColumnName="SERINO" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="ZIMMET" ColumnName="ZIMMET" />
+                <ScalarProperty Name="BIRIMID" ColumnName="BIRIMID" />
+                <ScalarProperty Name="PERSONELID" ColumnName="PERSONELID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YaziciMarkalari">
+            <EntityTypeMapping TypeName="BilgiIslemModel.YaziciMarkalari">
+              <MappingFragment StoreEntitySet="YaziciMarkalari">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="YAZICIMARKA" ColumnName="YAZICIMARKA" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YaziciModelleri">
+            <EntityTypeMapping TypeName="BilgiIslemModel.YaziciModelleri">
+              <MappingFragment StoreEntitySet="YaziciModelleri">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="YAZICIMODEL" ColumnName="YAZICIMODEL" />
+                <ScalarProperty Name="YAZICIMARKAID" ColumnName="YAZICIMARKAID" />
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

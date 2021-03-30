@@ -1,0 +1,84 @@
+﻿@model BilgiIslemEnvanter.Models.Entity.Personeller
+
+@{
+    ViewBag.Title = "Getir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("Guncelle", "Personel", FormMethod.Post))
+{
+    <div class="col-md-6 col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title" style="color:red">Personel Kayıt Güncelleme Formu</h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <form class="form form-horizontal">
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <b> <label>ID</label></b>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    @Html.TextBoxFor(m => m.ID, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+
+                                <div class="col-md-4">
+                                    <b><label>Sicili</label></b>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    @Html.TextBoxFor(m => m.SICIL, new { @class = "form-control", @autofocus = "" })
+                                </div>
+
+                                <div class="col-md-4">
+                                    <b><label>Adı Soyadı</label></b>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    @Html.TextBoxFor(m => m.ADSOYAD, new { @class = "form-control" })
+                                </div>
+
+                                <div class="col-md-4">
+                                    <b><label>Unvanı</label></b>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    @Html.DropDownListFor(m => m.Unvanlar.ID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+                                </div>
+
+                                <div class="col-md-4">
+                                    <b><label>Birimi</label></b>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    @Html.DropDownListFor(m => m.Birimler.ID, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <b><label>Dahili Telefonu</label></b>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    @Html.TextBoxFor(m => m.DAHILITELEFONU, new { @class = "form-control" })
+                                </div>
+
+                                <div class="col-md-4">
+                                    <b><label>Cep Telefonu</label></b>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    @Html.TextBoxFor(m => m.CEPTELEFONU, new { @class = "form-control" })
+                                </div>
+
+
+                                <div class="col-sm-12 d-flex justify-content-end">
+                                    <button class="btn btn-primary mr-1 mb-1">Güncelle</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}

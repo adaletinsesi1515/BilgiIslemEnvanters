@@ -1,0 +1,44 @@
+﻿@using BilgiIslemEnvanter.Models.Entity
+@model List<Personeller>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<a href="/Personel/Ekle/" class="btn btn-primary">Personel Ekle</a>
+<br />
+<br />
+<br />
+
+<table id="veri" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr style="background: brown; color: wheat; text-align: center">
+            <td>ID</td>
+            <td>SİCİLİ</td> 
+            <td>ADI SOYADI</td>
+            <td>UNVANI</td>
+            <td>BİRİMİ</td>
+            <td>DAHİLİ TELEFONU</td>
+            <td>İŞLEM</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bilgi in Model)
+        {
+            <tr>
+                <th>@bilgi.ID</th>
+                <td>@bilgi.SICIL</td>
+                <td>@bilgi.ADSOYAD</td>
+                <td>@bilgi.Unvanlar.UNVANAD</td>
+                <td>@bilgi.Birimler.BIRIMAD</td>
+                <td>@bilgi.DAHILITELEFONU</td>
+                <td>
+                    <a href="/Personel/Sil/@bilgi.ID" class="btn btn-danger">SİL            </a>
+                    <a href="/Personel/Getir/@bilgi.ID" class="btn btn-warning">GÜNCELLE</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

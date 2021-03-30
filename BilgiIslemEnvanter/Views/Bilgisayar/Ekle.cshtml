@@ -1,0 +1,58 @@
+﻿@model BilgiIslemEnvanter.Models.Entity.Bilgisayarlar
+
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Ekle", "Bilgisayar", FormMethod.Post))
+{
+
+
+<div class="col-md-6 col-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Bilgisayar Kayıt Formu</h4>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <form class="form form-horizontal">
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Marka</label>
+                            </div>
+                            <div class="col-md-8 form-group">
+                                @Html.TextBoxFor(m => m.MARKA, new { @class = "form-control", @autofocus="" })
+                                @Html.ValidationMessageFor(m => m.MARKA, "", new { @style = "color:red" })
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>Model</label>
+                            </div>
+                            <div class="col-md-8 form-group">
+                                @Html.TextBoxFor(m => m.MODEL, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.MODEL, "", new { @style = "color:red" })
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>Seri No</label>
+                            </div>
+                            <div class="col-md-8 form-group">
+                                @Html.TextBoxFor(m => m.SERINO, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.SERINO, "", new { @style = "color:red" })
+                            </div>
+
+                            <div class="col-sm-12 d-flex justify-content-end">
+                                <button class="btn btn-primary mr-1 mb-1">Kayıt</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+}
