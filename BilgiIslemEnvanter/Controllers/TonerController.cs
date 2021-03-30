@@ -23,24 +23,24 @@ namespace BilgiIslemEnvanter.Controllers
         public ActionResult TonerGiris()
         {
             List<SelectListItem> degerler1 = (from i in db.YaziciMarkalari.Where(i => i.DURUM == true).ToList()
-                select new SelectListItem
-                {
+                                              select new SelectListItem
+                                              {
 
-                    Text = i.YAZICIMARKA,
-                    Value = i.ID.ToString(),
+                                                  Text = i.YAZICIMARKA,
+                                                  Value = i.ID.ToString(),
 
-                }).ToList();
+                                              }).ToList();
             ViewBag.dgr1 = degerler1;
 
 
             List<SelectListItem> degerler2 = (from i in db.YaziciModelleri.Where(i => i.DURUM == true).ToList()
-                select new SelectListItem
-                {
+                                              select new SelectListItem
+                                              {
 
-                    Text = i.YAZICIMODEL,
-                    Value = i.ID.ToString(),
+                                                  Text = i.YAZICIMODEL,
+                                                  Value = i.ID.ToString(),
 
-                }).ToList();
+                                              }).ToList();
             ViewBag.dgr2 = degerler2;
 
             return View();
@@ -122,13 +122,13 @@ namespace BilgiIslemEnvanter.Controllers
             //ViewBag.dgr3 = personeller;
 
             List<SelectListItem> kullanici = (from i in db.Kullanicilar.Where(i => i.DURUM == true).ToList()
-                select new SelectListItem
-                {
+                                              select new SelectListItem
+                                              {
 
-                    Text = i.ADISOYADI,
-                    Value = i.ID.ToString(),
+                                                  Text = i.ADISOYADI,
+                                                  Value = i.ID.ToString(),
 
-                }).ToList();
+                                              }).ToList();
             ViewBag.dgr4 = kullanici;
 
             //List<SelectListItem> yazicimarka = (from i in db.YaziciMarkalari.Where(i => i.DURUM == true).ToList()
@@ -156,8 +156,6 @@ namespace BilgiIslemEnvanter.Controllers
             return View();
         }
 
-
-
         [HttpPost]
         public ActionResult TonerCikis(TonerCikis toner)
         {
@@ -172,138 +170,26 @@ namespace BilgiIslemEnvanter.Controllers
 
                 db.TonerCikis.Add(toner);
 
+
+                var TonerCikar = db.TonerStok.FirstOrDefault(x =>
+                    x.YAZICIMARKALARIID == toner.YAZICIMARKAID&& x.YAZICIMODELLERIID == toner.YAZICIMODELID);
+                TonerCikar.KALANTONER -= toner.TONERADET;
+                TonerCikar.KALANDRUM -= toner.DRAMADET;
+                db.Entry(TonerCikar).State = System.Data.Entity.EntityState.Modified;
+
                 db.SaveChanges();
 
             }
 
             return RedirectToAction("Liste");
         }
-
-
-        //if(ModelState.IsValid)
-        //{
-
-
-
-        //    if (toner.TONERADET== null || toner.DRAMADET == null)
-        //    {
-        //       return View("TonerCikis");
-        //    }
-        //    toner.DURUM = true;
-        //    db.TonerCikis.Add(toner);
-
-
+        
         public ActionResult TonerStok()
         {
             var model = db.TonerStok.ToList();
             return View(model);
         }
-
-       
-
-    [HttpGet]
-        public ActionResult TonerCikis1(int ID)
-        {
-
-            ViewBag.id = ID;
-
-            //var YaziciModel = db.Yazicilar.Where(x => x.ZIMMET == true).Select(a => new
-            //{
-            //    Value = a.ID,
-            //    Text = a.SERINO
-
-            //}).ToList();
-
-            //ViewBag.dgr1 = YaziciModel;
-
-            List<SelectListItem> birimler = (from i in db.Birimler.Where(i => i.DURUM == true).ToList()
-                                             select new SelectListItem
-                                             {
-
-                                                 Text = i.BIRIMAD,
-                                                 Value = i.ID.ToString(),
-
-                                             }).ToList();
-            ViewBag.dgr2 = birimler;
-
-
-            //List<SelectListItem> personeller = (from i in db.Personeller.Where(i => i.DURUM == true).ToList()
-            //                                    select new SelectListItem
-            //                                    {
-
-            //                                        Text = i.ADSOYAD,
-            //                                        Value = i.ID.ToString(),
-
-            //                                    }).ToList();
-            //ViewBag.dgr3 = personeller;
-
-            List<SelectListItem> kullanici = (from i in db.Kullanicilar.Where(i => i.DURUM == true).ToList()
-                                              select new SelectListItem
-                                              {
-
-                                                  Text = i.ADISOYADI,
-                                                  Value = i.ID.ToString(),
-
-                                              }).ToList();
-            ViewBag.dgr4 = kullanici;
-
-            List<SelectListItem> yazicimarka = (from i in db.YaziciMarkalari.Where(i => i.DURUM == true).ToList()
-                                                select new SelectListItem
-                                                {
-
-                                                    Text = i.YAZICIMARKA,
-                                                    Value = i.ID.ToString(),
-
-                                                }).ToList();
-            ViewBag.dgr5 = yazicimarka;
-
-
-            List<SelectListItem> yazicimodel = (from i in db.YaziciModelleri.Where(i => i.DURUM == true).ToList()
-                                                select new SelectListItem
-                                                {
-
-                                                    Text = i.YAZICIMODEL,
-                                                    Value = i.ID.ToString(),
-
-                                                }).ToList();
-            ViewBag.dgr6 = yazicimodel;
-
-
-            return View();
-        }
-
-
-
-        [HttpPost]
-        public ActionResult TonerCikis1(TonerCikis toner1)
-        {
-
-
-            db.TonerCikis.Add(toner1);
-            db.SaveChanges();
-            return RedirectToAction("Liste");
-
-            //var birim = db.Birimler.Where(m => m.ID == toner1.BIRIMID).FirstOrDefault();
-            //toner1.Birimler = birim;
-
-            //if (ModelState.IsValid)
-            //{
-            //    if (toner.TONERADET == null || toner.DRAMADET == null)
-            //    {
-            //        return View("TonerCikis");
-            //    }
-            //    toner.DURUM = true;
-
-
-            //}
-
-
-
-
-                return RedirectToAction("Liste");
-            }
-
-          
-        }
-
+        
     }
+
+}

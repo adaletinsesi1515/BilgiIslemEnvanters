@@ -1,0 +1,56 @@
+﻿@model IEnumerable<BilgiIslemEnvanter.Models.Entity.TonerStok>
+
+@{
+    ViewBag.Title = "TonerStok";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 align="center" style="color: red">Bilgi İşlem Şefliği Toner Depo Durumu</h2>
+<br />
+<table class="table">
+    <tr style="background: indigo; color:white">
+
+        <th>YAZICI MARKA</th>
+        <th>YAZICI MODEL</th>
+        <th>KALAN TONER</th>
+        <th>KALAN DRUM</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.YaziciMarkalari.YAZICIMARKA)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.YaziciModelleri.YAZICIMODEL)
+            </th>
+            @if (item.KALANTONER < 5)
+            {
+        <th style="background: red; color: white">
+            @Html.DisplayFor(modelItem => item.KALANTONER)
+        </th>
+            }
+            else
+            {
+                <th style="background: cadetblue; color: black">
+                    @Html.DisplayFor(modelItem => item.KALANTONER)
+                </th>
+            }
+
+            @if (item.KALANDRUM < 5)
+            {
+                <th style="background: red; color: white">
+                    @Html.DisplayFor(modelItem => item.KALANDRUM)
+                </th>
+            }
+            else
+            {
+                <th style="background: cadetblue; color: black">
+                    @Html.DisplayFor(modelItem => item.KALANDRUM)
+                </th>
+            }
+        </tr>
+    }
+
+</table>

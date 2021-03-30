@@ -945,7 +945,7 @@
     <Content Include="Views\Tasinir\FisDuzenle.cshtml" />
     <Content Include="Views\Toner\TonerGiris.cshtml" />
     <Content Include="Views\Toner\TonerCikis.cshtml" />
-    <Content Include="Views\Toner\TonerCikis1.cshtml" />
+    <Content Include="Views\Toner\TonerStok.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
