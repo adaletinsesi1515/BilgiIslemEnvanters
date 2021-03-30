@@ -12,7 +12,7 @@
     var modeller = db.Yazicilar.Where(x => x.ID == gelenid).FirstOrDefault();
     //var birimler = db.Birimler.Where(x => x.ID == modeller.Birimler.ID).FirstOrDefault();
     var yazicimarkalar = db.YaziciMarkalari.Where(x => x.ID == modeller.YaziciMarkalari.ID).FirstOrDefault();
-    var yazicimodeller = db.YaziciModelleri.Where(x => x.ID == modeller.YaziciModelleri.ID).FirstOrDefault();
+    var yazicimodeller = db.YaziciModelleri.Where(x => x.ID == modeller.YaziciModelleri.ID).FirstOrDefault(); 
 
 }
 
