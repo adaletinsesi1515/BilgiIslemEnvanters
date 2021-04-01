@@ -14,38 +14,42 @@
         <div class="row">
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-primary text-white mb-4">
-                    <div class="card-body">Depoda bulunan PC Sayısı: @Html.ViewBag.dgr1</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="~/Bilgisayar/Index/">Detay</a>
+                    <div class="card-body">Lexmark MS-510 Kalan Toner: @Html.ViewBag.dgr1</div>
+                    <div class="card-body">Lexmark MS-510 Kalan Drum:  @Html.ViewBag.dgr2</div>
+                    @*<div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="~/Toner/Toner/">Detay</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-warning text-white mb-4">
-                    <div class="card-body">Depoda bulunan Yazıcı Sayısı: @Html.ViewBag.dgr2</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
+                    <div class="card-body">Lexmark MS-810 Kalan Toner: @Html.ViewBag.dgr3</div>
+                    <div class="card-body">Lexmark MS-810 Kalan Drum:  @Html.ViewBag.dgr4</div>
+                    @*<div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="~/Yazici/Index/">Detay</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-success text-white mb-4">
-                    <div class="card-body">Depoda bulunan Tarayıcı Sayısı: @Html.ViewBag.dgr3</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
+                    <div class="card-body">Lexmark T650 Kalan Toner  : @Html.ViewBag.dgr5</div>
+                    <div class="card-body">Lexmark MS-823 Kalan Toner: @Html.ViewBag.dgr6</div>
+                    @*<div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="~/Tarayici/Index">Detay</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-danger text-white mb-4">
-                    <div class="card-body">Personel Sayısı: @Html.ViewBag.dgr4</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
+                    <div class="card-body">Personel Sayısı : @Html.ViewBag.dgr7</div>
+                    <div class="card-body">Toplam PC Sayısı: @Html.ViewBag.dgr8</div>
+                    @*<div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="~/Personel/Index">Detay</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>
@@ -69,6 +73,11 @@
                 </div>
             </div>
         </div>*@
+        
+        
+        
+        
+
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table mr-1" style="color: red"></i>
@@ -90,16 +99,7 @@
                                 <th>Yazıcı Son Sayacı</th>
                             </tr>
                         </thead>
-                        @*<tfoot>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
-                                </tr>
-                            </tfoot>*@
+                        
                         @foreach (var item in Model)
                         {
                             <tbody>
