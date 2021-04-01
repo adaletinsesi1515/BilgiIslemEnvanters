@@ -13,6 +13,7 @@ namespace BilgiIslemEnvanter.Controllers
     {
         // GET: Personel
         private BilgiIslemEntities db = new BilgiIslemEntities();
+        [Authorize]
 
         public ActionResult Index()
         {

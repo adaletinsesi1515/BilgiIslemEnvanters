@@ -10,6 +10,7 @@ namespace BilgiIslemEnvanter.Controllers
     public class HomeController : Controller
     {
         private BilgiIslemEntities db = new BilgiIslemEntities();
+        [Authorize]
         public ActionResult Index()
         {
             var liste = db.TonerCikis.ToList();

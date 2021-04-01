@@ -141,6 +141,7 @@
     <Compile Include="Controllers\BilgisayarController.cs" />
     <Compile Include="Controllers\BirimController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PersonelController.cs" />
     <Compile Include="Controllers\RaporlarController.cs" />
     <Compile Include="Controllers\TarayiciController.cs" />
@@ -802,6 +803,14 @@
     <Content Include="dist\fonts\Raleway-Regular.ttf" />
     <Content Include="dist\layouts\main.njk" />
     <Content Include="dist\mix-manifest.json" />
+    <Content Include="web\css\style.css" />
+    <Content Include="web\images\bg.png" />
+    <Content Include="web\images\check-icon.png" />
+    <Content Include="web\images\lock-icon.png" />
+    <Content Include="web\images\login-bg.png" />
+    <Content Include="web\images\user-icon.png" />
+    <Content Include="web\index.html" />
+    <Content Include="web\w3layouts-license.txt" />
     <EntityDeploy Include="Models\Entity\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -944,6 +953,8 @@
     <Content Include="Views\Toner\TonerGiris.cshtml" />
     <Content Include="Views\Toner\TonerCikis.cshtml" />
     <Content Include="Views\Toner\TonerStok.cshtml" />
+    <Content Include="Views\Login\GirisYap.cshtml" />
+    <Content Include="web\images\Thumbs.db" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

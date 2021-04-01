@@ -1,0 +1,49 @@
+﻿@model BilgiIslemEnvanter.Models.Entity.Kullanicilar
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Envanter Takip v.1.0</title>
+    <link href="~/web/css/style.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--webfonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text.css' />
+    <!--//webfonts-->
+    @*<script>
+        function myFunction() {
+            alert("welcome");
+        }
+    </script>*@
+</head>
+<body>
+<!--start-login-form-->
+    <div class="login-form">
+        <h1>Envanter Sistemi</h1>
+        @using(Html.BeginForm("GirisYap","Login", FormMethod.Post)) { 
+        <span>
+            <input type="text" class="user" name="SICIL" required="" value="SICIL" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'SICIL';}">
+        </span>
+        <span>
+            <input type="password" class="lock" name="SIFRE" required="" value="SIFRE" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'SIFRE';}">
+        </span>
+        <div class="submit">
+            <input type="submit" value="Giriş Yap" />
+        </div>
+        
+        }
+    
+        <!---start-copy-right---->
+        
+        <!---End-copy-right---->
+    </div>
+    <!--//End-login-form-->
+
+</body>
+</html>
+

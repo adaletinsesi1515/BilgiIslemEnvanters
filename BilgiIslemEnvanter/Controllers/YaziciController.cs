@@ -12,6 +12,7 @@ namespace BilgiIslemEnvanter.Controllers
         // GET: Yazici
 
         private BilgiIslemEntities db = new BilgiIslemEntities();
+        [Authorize]
         public ActionResult Index()
         {
             var listeleme = db.Yazicilar.Where(i=>i.DURUM==true).ToList();

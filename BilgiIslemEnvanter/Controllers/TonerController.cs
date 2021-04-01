@@ -12,6 +12,7 @@ namespace BilgiIslemEnvanter.Controllers
     {
         // GET: Toner
         BilgiIslemEntities db = new BilgiIslemEntities();
+        [Authorize]
 
         public ActionResult Liste()
         {

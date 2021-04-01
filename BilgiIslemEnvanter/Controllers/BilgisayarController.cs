@@ -9,8 +9,10 @@ namespace BilgiIslemEnvanter.Controllers
 {
     public class BilgisayarController : Controller
     {
+       
         // GET: Bilgisayar
-        private BilgiIslemEntities db = new BilgiIslemEntities();
+        public BilgiIslemEntities db = new BilgiIslemEntities();
+        [Authorize]
         public ActionResult Index()
         {
             var bilgisayarlar = db.Bilgisayarlar.Where(m => m.DURUM == true && m.SERINO!="BAKANLIK").ToList();

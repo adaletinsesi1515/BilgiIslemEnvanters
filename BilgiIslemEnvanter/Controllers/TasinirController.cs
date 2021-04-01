@@ -12,6 +12,7 @@ namespace BilgiIslemEnvanter.Controllers
     {
         // GET: Tasinir
         private BilgiIslemEntities db = new BilgiIslemEntities();
+        [Authorize]
         public ActionResult Liste()
         {
             var liste = db.Personeller.Where(m => m.DURUM == true).ToList();

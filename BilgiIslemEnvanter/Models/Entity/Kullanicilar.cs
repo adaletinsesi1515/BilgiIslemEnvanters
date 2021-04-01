@@ -11,7 +11,8 @@ namespace BilgiIslemEnvanter.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Kullanicilar
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,9 +22,12 @@ namespace BilgiIslemEnvanter.Models.Entity
         }
     
         public int ID { get; set; }
+        
         public string SICIL { get; set; }
         public string ADISOYADI { get; set; }
+        [Required(ErrorMessage = "Lütfen sicilinizi giriniz.")]
         public string KULLANICIADI { get; set; }
+        [Required(ErrorMessage = "Lütfen þifrenizi giriniz.")]
         public string SIFRE { get; set; }
         public Nullable<bool> DURUM { get; set; }
     

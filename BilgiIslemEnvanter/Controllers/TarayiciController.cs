@@ -11,6 +11,7 @@ namespace BilgiIslemEnvanter.Controllers
     {
         // GET: Tarayici
         private BilgiIslemEntities db = new BilgiIslemEntities();
+        [Authorize]
         public ActionResult Index()
         {
             var liste = db.Tarayicilar.Where(m => m.DURUM == true).ToList();

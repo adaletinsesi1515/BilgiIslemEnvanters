@@ -13,6 +13,7 @@ namespace BilgiIslemEnvanter.Controllers
     public class RaporlarController : Controller
     {
         private BilgiIslemEntities db = new BilgiIslemEntities();
+        [Authorize]
 
         #region Zimmet Listesi
 
