@@ -357,8 +357,6 @@
     <Content Include="dist\assets\images\background\auth.jpg" />
     <Content Include="dist\assets\images\favicon.png" />
     <Content Include="dist\assets\images\favicon.svg" />
-    <Content Include="dist\assets\images\logo.png" />
-    <Content Include="dist\assets\images\logo.svg" />
     <Content Include="dist\assets\images\samples\aerial-panoramic-image-of-sansonvale-lake-X6TCENW.jpg" />
     <Content Include="dist\assets\images\samples\amazing-animal-beautiful-beautifull.jpg" />
     <Content Include="dist\assets\images\samples\back-view-of-focused-programmer-writing-code-and-PDVAFDS.jpg" />

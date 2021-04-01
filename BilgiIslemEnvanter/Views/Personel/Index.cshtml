@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<a href="/Personel/Ekle/" class="btn btn-primary">Personel Ekle</a>
+<a href="~/Personel/Ekle/" class="btn btn-primary">Personel Ekle</a>
 <br />
 <br />
 <br />
@@ -34,8 +34,8 @@
                 <td>@bilgi.Birimler.BIRIMAD</td>
                 <td>@bilgi.DAHILITELEFONU</td>
                 <td>
-                    <a href="/Personel/Sil/@bilgi.ID" class="btn btn-danger">SİL            </a>
-                    <a href="/Personel/Getir/@bilgi.ID" class="btn btn-warning">GÜNCELLE</a>
+                    <a href="~/Personel/Sil/@bilgi.ID" class="btn btn-danger">SİL            </a>
+                    <a href="~/Personel/Getir/@bilgi.ID" class="btn btn-warning">GÜNCELLE</a>
                 </td>
             </tr>
         }

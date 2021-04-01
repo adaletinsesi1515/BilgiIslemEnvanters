@@ -17,6 +17,7 @@
         <tr style="background: darkblue; color: white; text-align: center">
             <td>Adı Soyadı</td>
             <td>Sicili</td>
+            <td>Birimi</td>
             <td>Domain Adı</td>
             <td>Bilgisayar</td>
             <td>Yazıcı</td>
@@ -30,40 +31,42 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-            
-                <td>
-                    @Html.DisplayFor(modelItem => item.Personeller.ADSOYAD)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Personeller.SICIL)
-                </td>
+        <tr>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.DOMAINADI)
-                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Personeller.ADSOYAD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Personeller.SICIL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Personeller.Birimler.BIRIMAD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOMAINADI)
+            </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Bilgisayarlar.MARKA)
-                    @Html.DisplayFor(modelItem => item.Bilgisayarlar.MODEL)
-                    @Html.DisplayFor(modelItem => item.Bilgisayarlar.SERINO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Yazicilar.YaziciMarkalari.YAZICIMARKA)
-                    @Html.DisplayFor(modelItem => item.Yazicilar.YaziciModelleri.YAZICIMODEL)
-                    @Html.DisplayFor(modelItem => item.Yazicilar.SERINO)
+            <td>
+                @Html.DisplayFor(modelItem => item.Bilgisayarlar.MARKA)
+                @Html.DisplayFor(modelItem => item.Bilgisayarlar.MODEL)
+                @Html.DisplayFor(modelItem => item.Bilgisayarlar.SERINO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Yazicilar.YaziciMarkalari.YAZICIMARKA)
+                @Html.DisplayFor(modelItem => item.Yazicilar.YaziciModelleri.YAZICIMODEL)
+                @Html.DisplayFor(modelItem => item.Yazicilar.SERINO)
 
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tarayicilar.MARKA)
-                    @Html.DisplayFor(modelItem => item.Tarayicilar.MODEL)
-                    @Html.DisplayFor(modelItem => item.Tarayicilar.SERINO)
-                </td>
-                <td>
-                    <a href="/Raporlar/Getir/@item.ID" class="btn btn-primary">DEPO TAŞI-GÜNCELLE</a>
-                </td>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tarayicilar.MARKA)
+                @Html.DisplayFor(modelItem => item.Tarayicilar.MODEL)
+                @Html.DisplayFor(modelItem => item.Tarayicilar.SERINO)
+            </td>
+            <td>
+                <a href="~/Raporlar/Getir/@item.ID" class="btn btn-primary">DEPO TAŞI-GÜNCELLE</a>
+            </td>
 
-            </tr>
+        </tr>
         }
     </tbody>
 

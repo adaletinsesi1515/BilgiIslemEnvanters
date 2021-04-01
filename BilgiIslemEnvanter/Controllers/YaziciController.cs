@@ -14,7 +14,7 @@ namespace BilgiIslemEnvanter.Controllers
         private BilgiIslemEntities db = new BilgiIslemEntities();
         public ActionResult Index()
         {
-            var listeleme = db.Yazicilar.ToList();
+            var listeleme = db.Yazicilar.Where(i=>i.DURUM==true).ToList();
             //var liste = db.Yazicilar.Where(m => m.DURUM == true).ToList();
             return View(listeleme);
         }

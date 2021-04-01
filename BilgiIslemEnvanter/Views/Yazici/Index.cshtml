@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<a href="/Yazici/Ekle/" class="btn btn-primary">Yazıcı Ekle</a>
+<a href="~/Yazici/Ekle/" class="btn btn-primary">Yazıcı Ekle</a>
 <br />
 
 <h2 style="color:red; text-align:center">Burdur Adliyesine ait Yazıcı Listesi</h2>
@@ -51,8 +51,8 @@
                     @Html.DisplayFor(modelItem => item.SERINO)
                 </td>
                 <td>
-                    <a href="/Yazici/Sil/@item.ID"><img border="0" alt="sil" src="~/resim/sil.png" width="20" height="20" /></a>
-                    <a href="/Yazici/Getir/@item.ID"><img border="0" alt="sil" src="~/resim/update.png" width="20" height="20" /></a>
+                    <a href="~/Yazici/Sil/@item.ID"><img border="0" alt="sil" src="~/resim/sil.png" width="20" height="20" /></a>
+                    <a href="~/Yazici/Getir/@item.ID"><img border="0" alt="sil" src="~/resim/update.png" width="20" height="20" /></a>
                 </td>
 
             </tr>
