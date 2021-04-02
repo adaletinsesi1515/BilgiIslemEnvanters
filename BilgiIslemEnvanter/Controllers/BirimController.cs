@@ -11,7 +11,7 @@ namespace BilgiIslemEnvanter.Controllers
     {
         // GET: Birim
         private BilgiIslemEntities db = new BilgiIslemEntities();
-        [Authorize]
+        [Authorize] 
         public ActionResult Index()
         {
             var liste = db.Birimler.Where(m => m.DURUM == true).ToList();

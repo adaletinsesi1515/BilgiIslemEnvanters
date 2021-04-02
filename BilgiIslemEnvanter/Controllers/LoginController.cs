@@ -41,7 +41,7 @@ namespace BilgiIslemEnvanter.Controllers
         }
         public ActionResult CikisYap()
         {
-            Session.Clear();
+            FormsAuthentication.SignOut();
             return RedirectToAction("GirisYap", "Login");
         }
 
