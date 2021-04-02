@@ -4,7 +4,6 @@
     ViewBag.Title = "Home Page";
 }
 
-
 <main>
     <div class="container-fluid">
         <h1 class="mt-4" style="color: red; text-align: center">BURDUR BİLGİ İŞLEM ŞEFLİĞİ</h1>
@@ -74,16 +73,17 @@
             </div>
         </div>*@
         
-        
-        
+       
         
 
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table mr-1" style="color: red"></i>
-                <b><label style="color:red">Toner Çıkışı Yapılan Birimler</label></b>
+                @*<b><label style="color:red">Toner Çıkışı Yapılan Birimler</label></b>*@
                 <a class="btn btn-primary" href="@Url.Action("Liste","Toner")">TONER ÇIKIŞ</a>
-
+                <a class="btn btn-warning" href="@Url.Action("TonerStok","Toner")">TONER STOK</a>
+                <a class="btn btn-danger" href="@Url.Action("ZimmetListesi","Raporlar")">ZİMMET LİSTESİ</a>
+                <a class="btn btn-success" href="@Url.Action("Index","Personel")">REHBER</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

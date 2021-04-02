@@ -135,7 +135,7 @@ namespace BilgiIslemEnvanter.Controllers
                 {
                     Value = a.ID,
 
-                    Text = a.SERINO
+                    Text = a.SERINO + " -- " + a.YaziciMarkalari.YAZICIMARKA + " -- " + a.YaziciModelleri.YAZICIMODEL
                 }).ToList();
 
 
