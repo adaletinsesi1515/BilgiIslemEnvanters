@@ -186,5 +186,16 @@ namespace BilgiIslemEnvanter.Controllers
             return RedirectToAction("ZimmetListesi");
         }
 
+        public ActionResult TarihFiltre1()
+        {
+            return View(db.TonerCikis.ToList());
+        }
+        [HttpPost]
+        public ActionResult TarihFiltre1(DateTime start, DateTime end)
+        {
+            
+            return View(db.GetFunctionTarihFiltresi(start, end));
+        }
+
     }
 }

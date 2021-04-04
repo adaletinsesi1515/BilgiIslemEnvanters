@@ -188,6 +188,9 @@
     <Compile Include="Models\Entity\Tarayicilar.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\tarihfiltresi_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entity\Tasinirlar.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -956,6 +959,7 @@
     <Content Include="Views\Toner\TonerStok.cshtml" />
     <Content Include="Views\Login\GirisYap.cshtml" />
     <Content Include="web\images\Thumbs.db" />
+    <Content Include="Views\Raporlar\TarihFiltre1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

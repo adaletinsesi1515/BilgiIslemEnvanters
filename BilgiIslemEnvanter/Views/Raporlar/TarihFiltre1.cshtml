@@ -1,0 +1,71 @@
+﻿@model IEnumerable<BilgiIslemEnvanter.Models.Entity.TonerCikis>
+
+@{
+    ViewBag.Title = "TarihFiltre1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="color: red">Toner Takma Tarihine Göre Raporlama</h2>
+<br />
+
+<center>
+    @using (Html.BeginForm("TarihFiltre1", "Raporlar", FormMethod.Post))
+    {
+        <span>Başlangıç Tarihi</span>
+        <input type="date" name="start" />
+        <span>Bitiş Tarihi</span>
+        <input type="date" name="end" />
+        <input type="submit" value="Sorgula" />
+
+        <table class="table">
+            <tr style="background: darkgreen; color: white">
+                <th>
+                    KULLANICISI
+                </th>
+                <th>
+                    BİRİMİ
+                </th>
+                <th>
+                    YAZICI MARKASI
+                </th>
+                <th>
+                    YAZICI MODELİ
+                </th>
+                <th>
+                    TAKMA TARİHİ
+                </th>
+                <th>
+                    TAKAN PERSONEL
+                </th>
+                
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Yazicilar.Personeller.ADSOYAD)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Birimler.BIRIMAD)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.YaziciMarkalari.YAZICIMARKA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.YaziciModelleri.YAZICIMODEL)
+                    </td>
+                    <td>
+                        @Convert.ToDateTime(item.TAKMATARIHI).ToString("d")
+                        
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Kullanicilar.ADISOYADI)
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+    }
+</center>

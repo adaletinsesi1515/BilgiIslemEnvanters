@@ -12,6 +12,8 @@ namespace BilgiIslemEnvanter.Models.Entity
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class BilgiIslemEntities : DbContext
     {
@@ -40,5 +42,44 @@ namespace BilgiIslemEnvanter.Models.Entity
         public virtual DbSet<Yazicilar> Yazicilar { get; set; }
         public virtual DbSet<YaziciMarkalari> YaziciMarkalari { get; set; }
         public virtual DbSet<YaziciModelleri> YaziciModelleri { get; set; }
+    
+        public virtual ObjectResult<tarihfiltresi_Result> tarihfiltresi(Nullable<System.DateTime> start, Nullable<System.DateTime> end)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(System.DateTime));
+    
+            var endParameter = end.HasValue ?
+                new ObjectParameter("end", end) :
+                new ObjectParameter("end", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tarihfiltresi_Result>("tarihfiltresi", startParameter, endParameter);
+        }
+    
+        public virtual ObjectResult<TonerCikis> GetFunctionTarihFiltresi(Nullable<System.DateTime> start, Nullable<System.DateTime> end)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(System.DateTime));
+    
+            var endParameter = end.HasValue ?
+                new ObjectParameter("end", end) :
+                new ObjectParameter("end", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TonerCikis>("GetFunctionTarihFiltresi", startParameter, endParameter);
+        }
+    
+        public virtual ObjectResult<TonerCikis> GetFunctionTarihFiltresi(Nullable<System.DateTime> start, Nullable<System.DateTime> end, MergeOption mergeOption)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(System.DateTime));
+    
+            var endParameter = end.HasValue ?
+                new ObjectParameter("end", end) :
+                new ObjectParameter("end", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TonerCikis>("GetFunctionTarihFiltresi", mergeOption, startParameter, endParameter);
+        }
     }
 }

@@ -418,6 +418,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="tarihfiltresi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="start" Type="datetime" Mode="In" />
+          <Parameter Name="end" Type="datetime" Mode="In" />
+        </Function>
         <EntityContainer Name="BilgiIslemModelStoreContainer">
           <EntitySet Name="Bilgisayarlar" EntityType="Self.Bilgisayarlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Birimler" EntityType="Self.Birimler" Schema="dbo" store:Type="Tables" />
@@ -1068,7 +1072,27 @@
             <End Role="YaziciModelleri" EntitySet="YaziciModelleri" />
             <End Role="Yazicilar" EntitySet="Yazicilar" />
           </AssociationSet>
+          <FunctionImport Name="tarihfiltresi" ReturnType="Collection(BilgiIslemModel.tarihfiltresi_Result)">
+            <Parameter Name="start" Mode="In" Type="DateTime" />
+            <Parameter Name="end" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="GetFunctionTarihFiltresi" EntitySet="TonerCikis" ReturnType="Collection(BilgiIslemModel.TonerCikis)">
+            <Parameter Name="start" Mode="In" Type="DateTime" />
+            <Parameter Name="end" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="tarihfiltresi_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="YAZICIID" Nullable="true" />
+          <Property Type="Int32" Name="BIRIMID" Nullable="true" />
+          <Property Type="Int32" Name="YAZICIMARKAID" Nullable="true" />
+          <Property Type="Int32" Name="YAZICIMODELID" Nullable="true" />
+          <Property Type="Int32" Name="TONERADET" Nullable="true" />
+          <Property Type="Int32" Name="DRAMADET" Nullable="true" />
+          <Property Type="DateTime" Name="TAKMATARIHI" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="YAZICISAYAC" Nullable="true" />
+          <Property Type="Int32" Name="TakanKullaniciId" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1263,6 +1287,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="tarihfiltresi" FunctionName="BilgiIslemModel.Store.tarihfiltresi">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BilgiIslemModel.tarihfiltresi_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="YAZICIID" ColumnName="YAZICIID" />
+                <ScalarProperty Name="BIRIMID" ColumnName="BIRIMID" />
+                <ScalarProperty Name="YAZICIMARKAID" ColumnName="YAZICIMARKAID" />
+                <ScalarProperty Name="YAZICIMODELID" ColumnName="YAZICIMODELID" />
+                <ScalarProperty Name="TONERADET" ColumnName="TONERADET" />
+                <ScalarProperty Name="DRAMADET" ColumnName="DRAMADET" />
+                <ScalarProperty Name="TAKMATARIHI" ColumnName="TAKMATARIHI" />
+                <ScalarProperty Name="YAZICISAYAC" ColumnName="YAZICISAYAC" />
+                <ScalarProperty Name="TakanKullaniciId" ColumnName="TakanKullaniciId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetFunctionTarihFiltresi" FunctionName="BilgiIslemModel.Store.tarihfiltresi" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
