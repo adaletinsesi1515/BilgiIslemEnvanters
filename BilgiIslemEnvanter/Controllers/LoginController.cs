@@ -12,7 +12,7 @@ namespace BilgiIslemEnvanter.Controllers
     {
         // GET: Login
 
-        private BilgiIslemEntities db = new BilgiIslemEntities();
+        private BilgiIslemEntities2 db = new BilgiIslemEntities2();
 
         public ActionResult GirisYap()
         {

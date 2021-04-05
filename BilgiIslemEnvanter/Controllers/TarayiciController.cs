@@ -10,7 +10,7 @@ namespace BilgiIslemEnvanter.Controllers
     public class TarayiciController : Controller
     {
         // GET: Tarayici
-        private BilgiIslemEntities db = new BilgiIslemEntities();
+        private BilgiIslemEntities2 db = new BilgiIslemEntities2();
         [Authorize]
         public ActionResult Index()
         {

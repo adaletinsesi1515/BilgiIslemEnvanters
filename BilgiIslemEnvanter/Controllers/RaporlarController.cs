@@ -12,7 +12,7 @@ namespace BilgiIslemEnvanter.Controllers
 
     public class RaporlarController : Controller
     {
-        private BilgiIslemEntities db = new BilgiIslemEntities();
+        private BilgiIslemEntities2 db = new BilgiIslemEntities2();
         [Authorize]
 
         #region Zimmet Listesi
@@ -124,6 +124,8 @@ namespace BilgiIslemEnvanter.Controllers
                     bilgi1.TARAYICIZIMMET = false;
                     bilgi1.BILGIZIMMET = false;
                     bilgi1.ZIMMET = false;
+                    bilgi1.Yazicilar.PERSONELID= 176;
+                    bilgi1.Yazicilar.BIRIMID = 50;
                 }
                 db.Entry(YaziciM).State = System.Data.Entity.EntityState.Modified;
             }
@@ -167,6 +169,8 @@ namespace BilgiIslemEnvanter.Controllers
 
                 var YaziciM = db.Yazicilar.FirstOrDefault(x => x.ID == bilgi1.YAZICIID);
                 YaziciM.ZIMMET = false;
+                YaziciM.PERSONELID = 176;
+                YaziciM.BIRIMID = 50; 
 
 
                 db.Entry(BilgiModel).State = System.Data.Entity.EntityState.Modified;

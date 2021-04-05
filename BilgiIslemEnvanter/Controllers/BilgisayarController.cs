@@ -11,7 +11,7 @@ namespace BilgiIslemEnvanter.Controllers
     {
        
         // GET: Bilgisayar
-        public BilgiIslemEntities db = new BilgiIslemEntities();
+        public BilgiIslemEntities2 db = new BilgiIslemEntities2();
         [Authorize]
         public ActionResult Index()
         {

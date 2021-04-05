@@ -11,7 +11,7 @@ namespace BilgiIslemEnvanter.Controllers
     public class TonerController : Controller
     {
         // GET: Toner
-        BilgiIslemEntities db = new BilgiIslemEntities();
+        BilgiIslemEntities2 db = new BilgiIslemEntities2();
         [Authorize]
 
         public ActionResult Liste()

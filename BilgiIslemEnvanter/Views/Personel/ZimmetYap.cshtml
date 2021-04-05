@@ -11,7 +11,7 @@
 
 @*active ekle*@
 @{
-    BilgiIslemEntities db = new BilgiIslemEntities();
+    BilgiIslemEntities2 db = new BilgiIslemEntities2();
 }
 
 @using (Html.BeginForm("Zimmetle", "Personel", FormMethod.Post))
@@ -68,7 +68,8 @@
                                 <label class="col-form-label">Birimi</label>
                             </div>
                             <div class="col-6 my-1">
-                                <input type="text" value="@birimbul.BIRIMAD" readonly class="form-control" />
+                                <input type="text" value="@birimbul.ID" name="BirimID" readonly hidden class="form-control" />
+                                <input type="text" value="@birimbul.BIRIMAD" readonly class="form-control"/>
                             </div>
                         </div>
                     </div>

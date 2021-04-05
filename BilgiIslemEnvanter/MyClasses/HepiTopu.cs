@@ -16,6 +16,9 @@ namespace BilgiIslemEnvanter.MyClasses
         public string yaziciIP { get; set; }
         public bool Durum { get; set; }
         public bool Zimmet { get; set; }
+        public int BirimID { get; set; }
+        
+
 
     }
 }

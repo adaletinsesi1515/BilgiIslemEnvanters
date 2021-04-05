@@ -16,65 +16,65 @@
                     <div class="card-body">Lexmark MS-510 Kalan Toner: @Html.ViewBag.dgr1</div>
                     <div class="card-body">Lexmark MS-510 Kalan Drum:  @Html.ViewBag.dgr2</div>
                     @*<div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="~/Toner/Toner/">Detay</a>
-                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div>*@
+                            <a class="small text-white stretched-link" href="~/Toner/Toner/">Detay</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>*@
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-warning text-white mb-4">
                     <div class="card-body">Lexmark MS-810 Kalan Toner: @Html.ViewBag.dgr3</div>
-                    <div class="card-body">Lexmark MS-810 Kalan Drum:  @Html.ViewBag.dgr4</div>
+                    <div class="card-body">Lexmark MS-810 Kalan Drum : @Html.ViewBag.dgr4</div>
                     @*<div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="~/Yazici/Index/">Detay</a>
-                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div>*@
+                            <a class="small text-white stretched-link" href="~/Yazici/Index/">Detay</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>*@
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-success text-white mb-4">
-                    <div class="card-body">Lexmark T650 Kalan Toner  : @Html.ViewBag.dgr5</div>
-                    <div class="card-body">Lexmark MS-823 Kalan Toner: @Html.ViewBag.dgr6</div>
+                    <div class="card-body">Lexmark MX-710 Kalan Toner: @Html.ViewBag.dgr7</div>
+                    <div class="card-body">Lexmark MX-710 Kalan Drum : @Html.ViewBag.dgr8</div>
                     @*<div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="~/Tarayici/Index">Detay</a>
-                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div>*@
+                            <a class="small text-white stretched-link" href="~/Tarayici/Index">Detay</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>*@
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-danger text-white mb-4">
-                    <div class="card-body">Personel Sayısı : @Html.ViewBag.dgr7</div>
-                    <div class="card-body">Toplam PC Sayısı: @Html.ViewBag.dgr8</div>
+                    <div class="card-body">Lexmark T650 Kalan Toner  : @Html.ViewBag.dgr5</div>
+                    <div class="card-body">Lexmark MS-823 Kalan Toner: @Html.ViewBag.dgr6</div>
                     @*<div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="~/Personel/Index">Detay</a>
-                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div>*@
+                            <a class="small text-white stretched-link" href="~/Personel/Index">Detay</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>*@
                 </div>
             </div>
         </div>
         @*<div class="row">
-            <div class="col-xl-6">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-chart-area mr-1"></i>
-                        Area Chart Example
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-chart-area mr-1"></i>
+                            Area Chart Example
+                        </div>
+                        <div class="card-body"><canvas id="myAreaChart" height="40"></canvas></div>
                     </div>
-                    <div class="card-body"><canvas id="myAreaChart" height="40"></canvas></div>
                 </div>
-            </div>
-            <div class="col-xl-6">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-chart-bar mr-1"></i>
-                        Bar Chart Example
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-chart-bar mr-1"></i>
+                            Bar Chart Example
+                        </div>
+                        <div class="card-body"><canvas id="myBarChart" height="40"></canvas></div>
                     </div>
-                    <div class="card-body"><canvas id="myBarChart" height="40"></canvas></div>
                 </div>
-            </div>
-        </div>*@
-        
-       
-        
+            </div>*@
+
+
+
 
         <div class="card mb-4">
             <div class="card-header">
@@ -96,10 +96,10 @@
                                 <th>Yazıcı Model</th>
                                 <th>Veriliş Tarihi</th>
                                 <th>Takan Personel</th>
-                                <th>Yazıcı Son Sayacı</th>
+                                <th>Toner/Drum</th>
                             </tr>
                         </thead>
-                        
+
                         @foreach (var item in Model)
                         {
                             <tbody>
@@ -110,8 +110,16 @@
                                     <td>@item.YaziciModelleri.YAZICIMODEL</td>
                                     <td>@Convert.ToDateTime(item.TAKMATARIHI).ToString("d")</td>
                                     <td>@item.Kullanicilar.ADISOYADI</td>
-                                    <td>@item.YAZICISAYAC</td>
-                                    
+                                    @if (item.DRAMADET == 0)
+                                    {
+                                        <td style="color: red">TONER</td>
+                                    }
+                                    else
+                                    {
+                                        <td style="color: blue">DRUM</td>
+                                    }
+
+
                                 </tr>
                             </tbody>
 

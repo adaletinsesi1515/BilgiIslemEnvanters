@@ -18,6 +18,7 @@ namespace BilgiIslemEnvanter.Models.Entity
         public Birimler()
         {
             this.Personeller = new HashSet<Personeller>();
+            this.Tasinirlar = new HashSet<Tasinirlar>();
             this.TonerCikis = new HashSet<TonerCikis>();
             this.Yazicilar = new HashSet<Yazicilar>();
         }
@@ -28,6 +29,8 @@ namespace BilgiIslemEnvanter.Models.Entity
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Personeller> Personeller { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tasinirlar> Tasinirlar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TonerCikis> TonerCikis { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -27,8 +27,10 @@ namespace BilgiIslemEnvanter.Models.Entity
         public Nullable<bool> BILGIZIMMET { get; set; }
         public Nullable<bool> YAZICIZIMMET { get; set; }
         public Nullable<bool> TARAYICIZIMMET { get; set; }
+        public Nullable<int> BIRIMID { get; set; }
     
         public virtual Bilgisayarlar Bilgisayarlar { get; set; }
+        public virtual Birimler Birimler { get; set; }
         public virtual Personeller Personeller { get; set; }
         public virtual Tarayicilar Tarayicilar { get; set; }
         public virtual Yazicilar Yazicilar { get; set; }

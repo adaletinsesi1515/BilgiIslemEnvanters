@@ -12,7 +12,7 @@ namespace BilgiIslemEnvanter.Controllers
     public class PersonelController : Controller
     {
         // GET: Personel
-        private BilgiIslemEntities db = new BilgiIslemEntities();
+        private BilgiIslemEntities2 db = new BilgiIslemEntities2();
         [Authorize]
 
         public ActionResult Index()
@@ -167,6 +167,7 @@ namespace BilgiIslemEnvanter.Controllers
             var domainadi = hep.domainAdi;
             var domainip = hep.domainIP;
             var yaziciip = hep.yaziciIP;
+            var birim = hep.BirimID;
             hep.Durum = true;
             hep.Zimmet = true;
 
@@ -180,6 +181,7 @@ namespace BilgiIslemEnvanter.Controllers
                 TARAYICIID = tarayici,
                 YAZICIID = yazici,
                 YAZICIPORT = yaziciip,
+                BIRIMID = birim, 
                 DURUM = true,
                 ZIMMET = true,
 
@@ -194,9 +196,11 @@ namespace BilgiIslemEnvanter.Controllers
             {
                 YaziciModel.ZIMMET = false;
             }
-            else
+            else 
             {
                 YaziciModel.ZIMMET = true;
+                YaziciModel.PERSONELID = hep.personelID;
+                YaziciModel.BIRIMID = hep.BirimID;
             }
             db.Entry(YaziciModel).State = System.Data.Entity.EntityState.Modified;
 

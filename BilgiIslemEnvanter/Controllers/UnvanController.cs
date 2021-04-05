@@ -10,7 +10,7 @@ namespace BilgiIslemEnvanter.Controllers
     public class UnvanController : Controller
     {
         // GET: Unvan
-        private BilgiIslemEntities db = new BilgiIslemEntities();
+        private BilgiIslemEntities2 db = new BilgiIslemEntities2();
         [Authorize]
         public ActionResult Index()
         {

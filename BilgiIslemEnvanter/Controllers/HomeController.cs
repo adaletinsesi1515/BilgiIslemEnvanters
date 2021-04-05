@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BilgiIslemEnvanter.Models.Entity;
+using Microsoft.Ajax.Utilities;
 
 namespace BilgiIslemEnvanter.Controllers
 {
     public class HomeController : Controller
     {
-        private BilgiIslemEntities db = new BilgiIslemEntities();
+        private BilgiIslemEntities2 db = new BilgiIslemEntities2();
         [Authorize]
         public ActionResult Index()
         {
@@ -37,10 +38,11 @@ namespace BilgiIslemEnvanter.Controllers
             //ViewBag.dgr2 = yazicisayisi;
             //var tarayicisayisi = db.Tarayicilar.Where(i => i.ZIMMET == false).Count()-1;
             //ViewBag.dgr3 = tarayicisayisi;
-            var perssayisi = db.Personeller.Where(i => i.DURUM== true).Count();
-            ViewBag.dgr7 = perssayisi;
-            var pcsayisi = db.Bilgisayarlar.Where(i => i.DURUM == true).Count();
-            ViewBag.dgr8 = pcsayisi;
+            var kalantonermx710 = db.TonerStok.Where(i => i.YAZICIMARKALARIID == 1 && i.YAZICIMODELLERIID == 9).Sum(stok => stok.KALANTONER);
+            ViewBag.dgr7 = kalantonermx710;
+
+            var kalandrummx710 = db.TonerStok.Where(i => i.YAZICIMARKALARIID == 1 && i.YAZICIMODELLERIID == 9).Sum(stok => stok.KALANDRUM);
+            ViewBag.dgr8 = kalandrummx710;
 
 
 

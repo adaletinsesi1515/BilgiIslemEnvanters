@@ -11,7 +11,7 @@ namespace BilgiIslemEnvanter.Controllers
     public class TasinirController : Controller
     {
         // GET: Tasinir
-        private BilgiIslemEntities db = new BilgiIslemEntities();
+        private BilgiIslemEntities2 db = new BilgiIslemEntities2();
         [Authorize]
         public ActionResult Liste()
         {
