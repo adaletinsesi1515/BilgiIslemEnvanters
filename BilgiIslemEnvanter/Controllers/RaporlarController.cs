@@ -30,7 +30,7 @@ namespace BilgiIslemEnvanter.Controllers
             //var db = Client.GetDatabase("Employee");
 
             //var collection = db.GetCollection<EmployeeDetails>("EmployeeDetails").Find(new BsonDocument()).ToList();
-            var Model = db.Tasinirlar.ToList();
+            var Model = db.Tasinirlar.Where(i=>i.ZIMMET == true).ToList();
 
             ExcelPackage Ep = new ExcelPackage();
             ExcelWorksheet Sheet = Ep.Workbook.Worksheets.Add("Report");
@@ -38,11 +38,9 @@ namespace BilgiIslemEnvanter.Controllers
             Sheet.Cells["B1"].Value = "Domain-Adi";
             Sheet.Cells["C1"].Value = "Domain-IP";
             Sheet.Cells["D1"].Value = "Yazici-Port";
-            Sheet.Cells["E1"].Value = "Durum";
-            Sheet.Cells["F1"].Value = "Zimmet";
-            Sheet.Cells["G1"].Value = "Bilgisayar";
-            Sheet.Cells["H1"].Value = "Tarayici";
-            Sheet.Cells["I1"].Value = "Yazici";
+            Sheet.Cells["E1"].Value = "Bilgisayar";
+            Sheet.Cells["F1"].Value = "Tarayici";
+            Sheet.Cells["G1"].Value = "Yazici";
 
             int row = 2;
             foreach (var item in Model)
@@ -52,12 +50,11 @@ namespace BilgiIslemEnvanter.Controllers
                 Sheet.Cells[string.Format("B{0}", row)].Value = item.DOMAINADI;
                 Sheet.Cells[string.Format("C{0}", row)].Value = item.DOMAINIP;
                 Sheet.Cells[string.Format("D{0}", row)].Value = item.YAZICIPORT;
-                Sheet.Cells[string.Format("E{0}", row)].Value = item.DURUM;
-
-                Sheet.Cells[string.Format("F{0}", row)].Value = item.ZIMMET;
-                Sheet.Cells[string.Format("G{0}", row)].Value = item.Bilgisayarlar.SERINO + " - " + item.Bilgisayarlar.MARKA + " - " + item.Bilgisayarlar.MODEL;
-                Sheet.Cells[string.Format("H{0}", row)].Value = item.Tarayicilar.SERINO + " - " + item.Tarayicilar.MARKA + " - " + item.Tarayicilar.MODEL;
-                //Sheet.Cells[string.Format("I{0}", row)].Value = item..SERINO + " - " + item.Yazicilar.MARKA + " - " + item.Yazicilar.MODEL;
+                
+                Sheet.Cells[string.Format("E{0}", row)].Value = item.Bilgisayarlar.SERINO + " - " + item.Bilgisayarlar.MARKA + " - " + item.Bilgisayarlar.MODEL;
+                
+                Sheet.Cells[string.Format("F{0}", row)].Value = item.Tarayicilar.SERINO + " - " + item.Tarayicilar.MARKA + " - " + item.Tarayicilar.MODEL;
+               Sheet.Cells[string.Format("G{0}", row)].Value = item.Yazicilar.SERINO /*+ " - " + item.Yazicilar.YaziciMarkalari.YAZICIMARKA + " - " + item.Yazicilar.MODELID*/;
                 row++;
             }
 
