@@ -24,13 +24,13 @@
                                     <b><label>Yazıcı Marka</label></b>
                                 </div>
                                 <div class="col-md-8 form-group">
-                                    @Html.DropDownListFor(m => m.YaziciMarkalari.ID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+                                    @Html.DropDownListFor(m => m.MARKAID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control", @name="MARKAID" })
                                 </div>
                                 <div class="col-md-4">
                                     <b><label>Yazıcı Model</label></b>
                                 </div>
                                 <div class="col-md-8 form-group">
-                                    @Html.DropDownListFor(m => m.YaziciModelleri.ID, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+                                    @Html.DropDownListFor(m => m.MODELID, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control", @name = "MODELID" })
                                 </div>
 
                                 <div class="col-md-4">

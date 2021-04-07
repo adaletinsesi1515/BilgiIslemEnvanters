@@ -55,9 +55,14 @@ namespace BilgiIslemEnvanter.Controllers
             {
                 return View("Ekle");
             }
-            db.Yazicilar.Add(p);
+            
             p.DURUM = true;
             p.ZIMMET = false;
+            p.BIRIMID = 50;
+            p.PERSONELID = 176;
+            
+            db.Yazicilar.Add(p);
+            
             db.SaveChanges();
             return RedirectToAction("Index");
         }
